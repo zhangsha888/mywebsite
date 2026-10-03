@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <title>加载中...</title>
+
+    <script src="/config.js"></script>
+
+    <script src="/static/index/js/h5-api-config.js"></script>
+
+    <script>
+
+    (function () {
+
+        function page(name) {
+
+            return (window.H5 && H5.pageUrl) ? H5.pageUrl(name) : name;
+
+        }
+
+        var target = 'gate.html';
+
+        try {
+
+            if (window.H5 && H5.getToken && H5.getToken()) {
+
+                target = 'home.html';
+
+            } else if (window.H5 && H5.getGateToken && H5.getGateToken()) {
+
+                target = 'login.html';
+
+            }
+
+        } catch (e) {}
+
+        window.location.replace(page(target));
+
+    })();
+
+    </script>
+
+</head>
+
+<body></body>
+
+</html>
+
