@@ -1,0 +1,184 @@
+/* 注册页 — 两步开户（与登录页风格一致） */
+.reg-wizard-page {
+    max-width: 420px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 12px 18px 28px;
+    box-sizing: border-box;
+}
+
+.reg-back {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.65);
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #595959;
+    text-decoration: none;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+}
+
+.reg-step-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.reg-step-card {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 14px;
+    padding: 12px;
+    text-align: center;
+}
+
+.reg-step-card .label {
+    display: block;
+    font-size: 12px;
+    color: #8c8c8c;
+    margin-bottom: 4px;
+}
+
+.reg-step-card .value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.reg-form-card {
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 20px;
+    padding: 22px 18px 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.reg-step-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    background: #e6f4ff;
+    color: #1890ff;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 10px;
+}
+
+.reg-form-title {
+    margin: 0 0 6px;
+    padding-right: 40px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.reg-form-sub {
+    margin: 0 0 18px;
+    font-size: 13px;
+    color: #8c8c8c;
+}
+
+.reg-wizard-panel {
+    display: none;
+}
+
+.reg-wizard-panel.active {
+    display: block;
+}
+
+.reg-privacy {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 12px;
+    color: #bfbfbf;
+}
+
+.reg-btn-next,
+.reg-btn-submit {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #69c0ff 0%, #1890ff 100%);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(24, 144, 255, 0.3);
+    margin-top: 8px;
+}
+
+.reg-btn-submit {
+    background: linear-gradient(135deg, #5cdbd3 0%, #36cfc9 100%);
+    box-shadow: 0 6px 18px rgba(54, 207, 201, 0.35);
+}
+
+.reg-back-login {
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    color: #1890ff;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.reg-oid-field {
+    margin-top: 14px;
+}
+
+.reg-form-alert {
+    margin: 0 0 14px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.reg-form-alert.is-error {
+    background: #fff2f0;
+    color: #cf1322;
+    border: 1px solid #ffccc7;
+}
+
+.reg-form-alert.is-success {
+    background: #f6ffed;
+    color: #389e0d;
+    border: 1px solid #b7eb8f;
+}
+
+.reg-field-hint {
+    margin: 6px 0 0;
+    padding: 0 4px;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #8c8c8c;
+}
+
+.reg-field-hint.is-hidden,
+.reg-form-alert.is-hidden {
+    display: none !important;
+}
+
+.reg-field-hint:not(.is-hidden) {
+    display: block;
+}
+
+.reg-field-hint.is-error {
+    color: #ff4d4f;
+}
+
+.login-input-wrap.has-error {
+    border-color: #ff4d4f !important;
+    box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.12);
+}

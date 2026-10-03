@@ -1,0 +1,1506 @@
+/* 产品下单页 K 线 — 浅色主题；中间可滚，买卖栏固定在底栏上方 */
+html.goods-chart-root,
+html:has(.goods-chart-body) {
+    font-size: 16px !important;
+    height: 100% !important;
+    overflow: hidden !important;
+}
+
+.goods-chart-body {
+    overflow: hidden !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: 100% !important;
+    padding-bottom: 0 !important;
+    box-sizing: border-box;
+    /* 底栏 + 买卖栏预留，避免内容被盖住 */
+    --goods-tabbar-h: calc(56px + env(safe-area-inset-bottom, 0px));
+    --goods-tradebar-h: 64px;
+}
+
+.goods-chart-body #app,
+.goods-chart-body .box {
+    min-height: 0 !important;
+    height: 100% !important;
+    overflow: hidden !important;
+}
+
+.goods-chart-body #app > .box {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100dvh !important;
+    min-height: 100vh !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+}
+
+.goods-chart-body #app > .box > .app-footer-nav,
+.goods-chart-body #app > .box > nav.footer.home-ui-tabbar,
+.goods-chart-body #h5-tabbar .home-ui-tabbar,
+.goods-chart-body #h5-tabbar nav.footer {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    flex-shrink: 0 !important;
+}
+
+/* 弹层容器：默认不占页面、不参与滚动 */
+.goods-order-overlays {
+    display: none !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 9999 !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+}
+
+body.goods-chart-body.order-panel-open .goods-order-overlays,
+body.goods-chart-body.order-state-open .goods-order-overlays {
+    display: block !important;
+    pointer-events: auto !important;
+}
+
+.goods-order-overlays[hidden] {
+    display: none !important;
+}
+
+/* 解除 Ionic 全屏层叠，避免 K 线区盖住买卖栏 */
+.goods-chart-body .view-container,
+.goods-chart-body .trade-view.pane,
+.goods-chart-body ion-view.trade-view {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    flex: 1 1 auto !important;
+    overflow: hidden !important;
+    transform: none !important;
+}
+
+.goods-chart-body ion-nav-view.view-container {
+    display: block !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+}
+
+/* 主滚动区：顶栏与「买卖栏+底栏」之间可上下滑动 */
+.goods-chart-body ion-content.trade-content.scroll-content {
+    position: fixed !important;
+    top: 44px !important;
+    bottom: calc(var(--goods-tabbar-h) + var(--goods-tradebar-h)) !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow-x: hidden !important;
+    overflow-y: scroll !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-y: contain !important;
+    touch-action: pan-y !important;
+    z-index: 1 !important;
+}
+
+/* 禁止 Ionic 虚拟滚动条挡手势 */
+.goods-chart-body ion-content .scroll-bar {
+    display: none !important;
+    pointer-events: none !important;
+}
+
+.goods-chart-body ion-nav-bar.headerbar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.goods-chart-body,
+.goods-chart-body .trade-view,
+.goods-chart-body .trade-content,
+.goods-chart-body .content-background,
+.goods-chart-body ion-content {
+    background: linear-gradient(180deg, #c5e3f5 0%, #dceef8 28%, #eef5fb 55%, #f5f8fb 100%) !important;
+}
+
+.goods-chart-body .bar-stable.headerbar,
+.goods-chart-body ion-header-bar.bar-stable {
+    background: rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06) !important;
+}
+
+.goods-chart-body .goodstitle,
+.goods-chart-body .header-item.title {
+    color: #1a1a1a !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+}
+
+.goods-chart-body .back-button,
+.goods-chart-body .back-button i {
+    color: #333 !important;
+}
+
+.goods-quote-card {
+    margin: 10px 12px 8px;
+    padding: 14px 14px 12px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+}
+
+.goods-product-name {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #1a1a1a !important;
+    margin-bottom: 8px !important;
+    line-height: 1.35 !important;
+}
+
+.goods-chart-body ion-header-bar .header-item.goodstitle {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+.goods-product-name em {
+    font-style: normal;
+    font-size: 13px;
+    font-weight: 500;
+    color: #8c8c8c;
+    margin-left: 4px;
+}
+
+.goods-price-row {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    margin-bottom: 12px;
+}
+
+.goods-price {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.goods-price.rise,
+.goods-change.rise {
+    color: #ff4d4f;
+}
+
+.goods-price.fall,
+.goods-change.fall {
+    color: #52c41a;
+}
+
+.goods-change {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.goods-quote-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 12px;
+    font-size: 12px;
+}
+
+.goods-quote-stats .stat {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.goods-quote-stats .l {
+    color: #8c8c8c;
+    flex-shrink: 0;
+}
+
+.goods-quote-stats .v {
+    color: #595959;
+    text-align: right;
+    word-break: break-all;
+}
+
+/* 覆盖 trade.css 深色 nav（否则会盖住周期按钮） */
+.goods-chart-body .trade-content .goods-chart-nav,
+.goods-chart-body .trade-content nav.goods-chart-nav {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    margin: 0 12px 8px !important;
+    padding: 8px 10px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06) !important;
+    width: auto !important;
+    position: relative !important;
+    z-index: 5 !important; /* 防止图表层视觉/事件穿透到时间切换条 */
+}
+
+.goods-chart-nav .goods-chart-type-tabs {
+    display: flex !important;
+    gap: 4px !important;
+    flex: 0 0 auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 3px !important;
+    background: #f0f2f5 !important;
+    border-radius: 8px !important;
+}
+
+.goods-chart-nav .goods-chart-type-tabs .trade-chart-type {
+    display: inline-block !important;
+    flex: 1 !important;
+    min-width: 44px !important;
+    padding: 6px 10px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #8c8c8c !important;
+    text-align: center !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    background: transparent !important;
+    line-height: 1.2 !important;
+    height: auto !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+.goods-chart-nav .goods-chart-type-tabs .trade-chart-type.active {
+    color: #1890ff !important;
+    background: #fff !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08) !important;
+}
+
+.goods-chart-nav .trade-chart-period {
+    flex: 0 0 auto !important;
+    padding: 6px 10px !important;
+    font-size: 13px !important;
+    color: #8c8c8c !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    border: none !important;
+    background: transparent !important;
+    margin: 0 !important;
+    height: auto !important;
+    line-height: 1.3 !important;
+    text-align: center !important;
+    border-bottom: none !important;
+}
+
+.goods-chart-nav .trade-chart-period.active {
+    color: #1a1a1a;
+    font-weight: 700;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+/* 非激活周期按钮：清掉潜在边框/伪元素分隔线，避免出现你说的“1M/5M 中间黑线” */
+.goods-chart-body .goods-chart-nav .trade-chart-period:not(.active) {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+.goods-chart-body .goods-chart-nav .trade-chart-period:not(.active)::before,
+.goods-chart-body .goods-chart-nav .trade-chart-period:not(.active)::after {
+    content: none !important;
+}
+
+.goods-chart-nav .trade-chart-period.active::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 2px;
+    width: 16px;
+    height: 2px;
+    margin-left: -8px;
+    background: #fa8c16;
+    border-radius: 1px;
+}
+
+/* 与报价卡片、周期条同宽：左右 12px 对称，避免 K 线区贴右 */
+.goods-chart-area,
+.goods-chart-body .trade-content footer.goods-chart-area {
+    display: block !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 12px 8px !important;
+    padding: 0 !important;
+    background: #fff !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+    overflow: hidden !important;
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    box-sizing: border-box !important;
+    z-index: 1;
+}
+
+.goods-chart-body #container {
+    height: 280px !important;
+    min-height: 280px !important;
+    max-height: 280px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #fff !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    padding: 4px 6px 4px 4px !important;
+    margin: 0 !important;
+}
+
+.goods-chart-area #container,
+.goods-chart-area #ecKx {
+    background: #fff !important;
+}
+
+.goods-chart-body .trade-content footer:not(.goods-chart-area) {
+    width: 100% !important;
+}
+
+.goods-chart-body .l_chartDataNav {
+    display: none !important;
+}
+
+.goods-chart-body #container,
+.goods-chart-body #ecKx {
+    position: relative;
+    z-index: 0;
+    overflow: hidden !important;
+    contain: layout paint !important;
+}
+
+.goods-chart-body #ecKx {
+    width: 100% !important;
+    height: 280px !important;
+    min-height: 280px !important;
+    max-height: 280px !important;
+    overflow: hidden !important;
+}
+
+.goods-chart-body .goods-chart-area {
+    overflow: hidden !important;
+    border-radius: 0 0 12px 12px !important;
+}
+
+/* 矮屏略缩小 K 线高度，给下方按钮留出可视区 */
+@media (max-height: 740px) {
+    .goods-chart-body #container,
+    .goods-chart-body #ecKx {
+        height: 240px !important;
+        min-height: 240px !important;
+        max-height: 240px !important;
+    }
+}
+
+@media (max-height: 640px) {
+    .goods-chart-body #container,
+    .goods-chart-body #ecKx {
+        height: 200px !important;
+        min-height: 200px !important;
+        max-height: 200px !important;
+    }
+}
+
+.goods-chart-body .trade-content .scroll {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 100% !important;
+    transform: none !important;
+    display: block !important;
+    position: relative !important;
+    /* 允许从空白区拖动；图表区单独限制 */
+    touch-action: pan-y !important;
+}
+
+.goods-chart-body .trade-content .scroll.goods-page-scroll {
+    display: block !important;
+    min-height: auto !important;
+    padding-bottom: 16px !important;
+    box-sizing: border-box !important;
+}
+
+/* K 线区允许纵向滑动手势透出到页面滚动 */
+.goods-chart-body .goods-chart-area,
+.goods-chart-body #container,
+.goods-chart-body #ecKx {
+    touch-action: pan-y !important;
+}
+
+/* 买涨/买跌/持仓：固定在底栏上方，任何机型都能直接点到 */
+.goods-chart-body .goods-trade-bar,
+.goods-chart-body .trade_bar.goods-trade-bar,
+.goods-chart-body .trade-view .trade_bar.goods-trade-bar {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: var(--goods-tabbar-h) !important;
+    top: auto !important;
+    z-index: 1002 !important;
+    display: flex !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+    padding: 8px 12px !important;
+    height: auto !important;
+    min-height: var(--goods-tradebar-h) !important;
+    box-sizing: border-box !important;
+    background: rgba(238, 245, 251, 0.96) !important;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.goods-chart-body .goods-market-closed {
+    flex: 1;
+    margin: 0;
+    padding: 14px;
+    text-align: center;
+    font-size: 15px;
+    color: #8c8c8c;
+    background: #fff;
+    border-radius: 12px;
+}
+
+/* 底部导航与首页一致 */
+.goods-chart-body .app-footer-nav,
+.goods-chart-body nav.footer.home-ui-tabbar,
+.goods-chart-body #h5-tabbar .home-ui-tabbar {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 1001 !important;
+    height: auto !important;
+    min-height: 56px !important;
+    padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+    background: #fff !important;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.goods-chart-body .app-footer-nav .tab-icon,
+.goods-chart-body .app-footer-nav .t_span span {
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    color: #595959 !important;
+}
+
+.goods-chart-body .app-footer-nav a.tab-active .tab-icon,
+.goods-chart-body .app-footer-nav a.tab-active span {
+    color: #1890ff !important;
+}
+
+/* 覆盖 trade.css 旧版绝对定位底栏 */
+.goods-chart-body .trade-view .trade_bar.goods-trade-bar {
+    position: fixed !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: var(--goods-tradebar-h) !important;
+    bottom: var(--goods-tabbar-h) !important;
+}
+
+.goods-chart-body .goods-trade-btn {
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: none !important;
+    border-radius: 24px !important;
+    padding: 12px 8px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    box-sizing: border-box !important;
+    height: auto !important;
+    min-height: 44px !important;
+    pointer-events: auto !important; /* 确保可点 */
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+.goods-chart-body .goods-trade-hold {
+    background: #595959 !important;
+    color: #fff !important;
+}
+
+.goods-chart-body .goods-trade-up {
+    background: linear-gradient(135deg, #ff7875 0%, #ff4d4f 100%) !important;
+}
+
+.goods-chart-body .goods-trade-down {
+    background: linear-gradient(135deg, #73d13d 0%, #52c41a 100%) !important;
+}
+
+.goods-chart-body .goods-trade-btn-label {
+    display: block !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+    font-size: 15px !important;
+    color: inherit !important;
+}
+
+.goods-order-overlays .pro_mengban,
+.goods-order-overlays .order_mengban {
+    display: none !important;
+    position: fixed !important;
+    inset: 0 !important;
+    pointer-events: none !important;
+    background: transparent !important;
+}
+
+.goods-order-overlays .pro_mengban.glass_mask,
+.goods-order-overlays .order_mengban.glass_mask {
+    display: block !important;
+    pointer-events: auto !important;
+    background: rgba(0, 0, 0, 0.45) !important;
+}
+
+.goods-chart-body .order-confirm-panel {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    z-index: 1502 !important;
+    width: 90% !important;
+    max-width: 420px !important;
+    max-height: calc(100vh - 100px) !important;
+    overflow: hidden !important;
+}
+
+.goods-chart-body .order-confirm-panel.open,
+.goods-chart-body .order-state-panel.open {
+    pointer-events: auto !important;
+}
+
+.goods-chart-body .order-state-panel {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    width: 92% !important;
+    max-width: 400px !important;
+    min-height: 300px !important;
+    max-height: calc(100vh - 80px) !important;
+    height: auto !important;
+    z-index: 10002 !important;
+    display: none !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    background-color: #1b1a1e !important;
+    border: 1px solid #585352 !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45) !important;
+    isolation: isolate !important;
+}
+
+.goods-chart-body .order-state-panel.open {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    visibility: visible !important;
+    width: 92% !important;
+    max-width: 400px !important;
+}
+
+.goods-chart-body .order-state-panel .goods-order-state-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    min-height: 44px !important;
+    padding: 10px 40px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.goods-chart-body .order-state-panel .goods-order-state-title {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #f0f0f5 !important;
+    text-align: center !important;
+    line-height: 1.35 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    max-width: 100% !important;
+}
+
+.goods-chart-body .order-state-panel .goods-order-state-header .close {
+    position: absolute !important;
+    right: 8px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+/* 弹层打开时不要藏图表，避免弹层失败时只剩白屏 */
+body.goods-chart-body.order-state-open #container,
+body.goods-chart-body.order-state-open #ecKx,
+body.goods-chart-body.order-panel-open #container,
+body.goods-chart-body.order-panel-open #ecKx {
+    visibility: visible !important;
+    pointer-events: none !important;
+}
+
+/* 强制显示下单遮罩与确认框 */
+body.goods-chart-body.order-panel-open .goods-order-overlays,
+body.goods-chart-body.order-state-open .goods-order-overlays,
+.goods-order-overlays[data-force-show="1"] {
+    display: block !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    z-index: 9999 !important;
+}
+
+body.goods-chart-body.order-panel-open .pro_mengban.glass_mask,
+body.goods-chart-body .pro_mengban.glass_mask {
+    display: block !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    background: rgba(0, 0, 0, 0.55) !important;
+    z-index: 10000 !important;
+}
+
+body.goods-chart-body .order-confirm-panel.open,
+.goods-order-overlays .order-confirm-panel.open {
+    display: flex !important;
+    flex-direction: column !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background-color: #1b1a1e !important;
+    color: #f0f0f5 !important;
+    z-index: 10002 !important;
+}
+
+.goods-chart-body .order-state-panel .panel-body {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    float: none !important;
+    flex: 1 1 auto !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    max-height: calc(100vh - 160px) !important;
+}
+
+.goods-chart-body .order-state-panel > .panel-header,
+.goods-chart-body .order-state-panel > .panel-body {
+    width: 100% !important;
+    max-width: 100% !important;
+    float: none !important;
+}
+
+.goods-chart-body .order-state-panel .circle_wrapper,
+.goods-chart-body .order-state-panel .goods-order-countdown {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    float: none !important;
+}
+
+.goods-chart-body .order-state-panel .panel-header {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.goods-order-overlays .history-panel,
+.goods-chart-body .history-panel {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+    position: fixed !important;
+}
+
+.goods-order-overlays .history-panel.is-visible,
+.goods-chart-body .history-panel.is-visible {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    position: fixed !important;
+    top: 12% !important;
+    bottom: 12% !important;
+    left: 4% !important;
+    right: 4% !important;
+    width: auto !important;
+    height: auto !important;
+    z-index: 1600 !important;
+    background-color: #1b1a1e !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+}
+
+.goods-chart-body .trade-view.pane {
+    min-height: 0 !important;
+    height: auto !important;
+}
+
+.goods-chart-body ion-content.trade-content {
+    contain: layout style !important;
+}
+
+.goods-chart-body.order-panel-open .goods-trade-bar,
+.goods-chart-body.order-state-open .goods-trade-bar {
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+.goods-chart-body .btn_confirm .button:disabled,
+.goods-chart-body .btn_confirm .button.disabled {
+    opacity: 0.45 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+}
+
+.goods-order-overlays .order-state-panel:not(.open),
+.goods-chart-body .order-state-panel:not(.open) {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+.goods-order-overlays .order-state-panel:not(.open) *,
+.goods-chart-body .order-state-panel:not(.open) * {
+    display: none !important;
+}
+
+.goods-order-overlays .order-confirm-panel:not(.open) {
+    display: none !important;
+}
+
+.goods-chart-body .order-state-panel .button_row {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    padding: 12px 16px 16px !important;
+    margin: 0 !important;
+}
+
+.goods-chart-body .invest_account .no-money {
+    display: inline-block !important;
+}
+
+.goods-chart-body .order_mengban.glass_mask .order-state-panel .button,
+.goods-chart-body .order_mengban.glass_mask .order-state-panel .close {
+    pointer-events: auto !important;
+}
+
+.goods-chart-body .order-state-panel .button,
+.goods-chart-body .goods-btn-hold {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+}
+
+.goods-chart-body .goods-trade-hold {
+    position: relative;
+    pointer-events: auto !important;
+}
+
+.goods-chart-body .goods-chart-area canvas {
+    pointer-events: none !important;
+}
+
+/* 覆盖 style.css / trade 旧版底栏绝对定位 */
+.goods-chart-body .trade-view .trade_bar {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 48px !important;
+}
+
+/* ========== 订单确认弹窗：疏朗布局 ========== */
+.goods-chart-body .order-confirm-panel.open,
+.goods-order-overlays .order-confirm-panel.open {
+    width: 92% !important;
+    max-width: 400px !important;
+    height: auto !important;
+    max-height: min(88vh, 640px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35) !important;
+    background-color: #1b1a1e !important;
+}
+
+.goods-chart-body .order-confirm-panel .panel-header {
+    flex-shrink: 0 !important;
+    height: 48px !important;
+    line-height: 48px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+
+.goods-chart-body .order-confirm-panel .panel-body {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 4px 14px 10px !important;
+    background-size: 100px !important;
+    background-position: right 8px bottom 8px !important;
+}
+
+.goods-chart-body .order-confirm-panel .goods-order-submit-bar,
+.goods-order-overlays .order-confirm-panel .goods-order-submit-bar {
+    flex-shrink: 0 !important;
+    display: block !important;
+    visibility: visible !important;
+    position: relative !important;
+    z-index: 5 !important;
+    padding: 10px 14px calc(14px + env(safe-area-inset-bottom, 0px)) !important;
+    background: #1b1a1e !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.25) !important;
+}
+
+.goods-chart-body .order-confirm-panel .goods-order-submit-bar {
+    padding-top: 8px !important;
+}
+
+.goods-chart-body .order-confirm-panel .goods-order-submit-bar .btn_confirm {
+    margin: 0 !important;
+    display: block !important;
+    visibility: visible !important;
+}
+
+.goods-chart-body .order-confirm-panel .goods-order-submit-bar .btn_confirm .button,
+.goods-chart-body .order-confirm-panel .goods-order-submit-btn {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    height: 48px !important;
+    line-height: 48px !important;
+    margin: 0 !important;
+    padding: 0 16px !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    background: linear-gradient(180deg, #4d9bff 0%, #3b7eff 100%) !important;
+    box-shadow: 0 4px 12px rgba(59, 126, 255, 0.35) !important;
+}
+
+.goods-chart-body .order-confirm-panel .goods-order-submit-bar .btn_confirm .button:disabled,
+.goods-chart-body .order-confirm-panel .goods-order-submit-btn:disabled {
+    opacity: 0.45 !important;
+    box-shadow: none !important;
+}
+
+.goods-chart-body .order-confirm-panel .goods-order-section {
+    margin-bottom: 14px !important;
+    padding-bottom: 14px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.goods-chart-body .order-confirm-panel .goods-order-section:last-of-type {
+    border-bottom: none !important;
+}
+
+.goods-chart-body .order-confirm-panel .goods-order-section-label {
+    margin: 0 0 10px !important;
+    padding: 0 !important;
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    color: #8a8a96 !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.02em !important;
+}
+
+.goods-chart-body .order-confirm-panel .mode {
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    border-top: none !important;
+}
+
+.goods-chart-body .order-confirm-panel .mode-picker,
+.goods-chart-body .order-confirm-panel .mode .mode-view {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    width: 100% !important;
+}
+
+.goods-chart-body .order-confirm-panel .mode-box {
+    float: none !important;
+    flex: 1 1 calc(50% - 4px) !important;
+    min-width: 120px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    padding: 0 12px !important;
+    margin: 0 !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    color: #fff !important;
+    text-align: center !important;
+    background-color: #38373e !important;
+    background-image: none !important;
+    box-sizing: border-box !important;
+}
+
+.goods-chart-body .order-confirm-panel .mode-box.active {
+    color: #3b7eff !important;
+    border: 1px solid #3b7eff !important;
+    background-color: #2a3448 !important;
+    background-image: url(../img/selection.png) !important;
+    background-size: 14px !important;
+    background-position: right top !important;
+    background-repeat: no-repeat !important;
+}
+
+.goods-chart-body .order-confirm-panel .period {
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    border-top: none !important;
+}
+
+.goods-chart-body .order-confirm-panel .period-picker {
+    overflow: visible !important;
+}
+
+.goods-chart-body .order-confirm-panel .period .period-widget-view {
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    justify-content: space-between !important;
+    float: none !important;
+}
+
+.goods-chart-body .order-confirm-panel .period-widget {
+    float: none !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 12px 6px !important;
+    border-radius: 10px !important;
+    background-image: none !important;
+    background-color: #38373e !important;
+    overflow: hidden !important;
+    min-height: 68px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.goods-chart-body .order-confirm-panel .period-widget.active {
+    border: 1px solid #3b7eff !important;
+    background-color: #2a3448 !important;
+    background-image: url(../img/selection.png) !important;
+    background-size: 14px !important;
+    background-position: right top !important;
+    background-repeat: no-repeat !important;
+}
+
+.goods-chart-body .order-confirm-panel .period-widget-header,
+.goods-chart-body .order-confirm-panel .period-widget-footer,
+.goods-chart-body .order-confirm-panel .period-widget-footer.period_footer,
+.goods-chart-body .order-confirm-panel .period_footer {
+    display: none !important;
+}
+
+.goods-chart-body .order-confirm-panel .period-widget-content,
+.goods-chart-body .order-confirm-panel .goods-period-time {
+    height: auto !important;
+    line-height: 1.2 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+}
+
+.goods-chart-body .order-confirm-panel .period-widget-content .final_time {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #3b7eff !important;
+}
+
+.goods-chart-body .order-confirm-panel .period-widget-content .final_unit {
+    font-size: 12px !important;
+    color: #9a9aa8 !important;
+    margin-top: 2px !important;
+}
+
+.goods-chart-body .order-confirm-panel .amount {
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+.goods-chart-body .order-confirm-panel .goods-order-hint {
+    margin: 0 0 10px !important;
+    min-height: 0 !important;
+}
+
+.goods-chart-body .order-confirm-panel .invest_account span {
+    width: 100% !important;
+    text-align: left !important;
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    padding: 8px 10px !important;
+    border-radius: 8px !important;
+    background: rgba(255, 60, 60, 0.12) !important;
+    box-sizing: border-box !important;
+}
+
+.goods-chart-body .order-confirm-panel .invest_account span.ng-hide {
+    display: none !important;
+}
+
+.goods-chart-body .order-confirm-panel .amount-picker {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+}
+
+.goods-chart-body .order-confirm-panel .amount .scroll-view,
+.goods-chart-body .order-confirm-panel .amount .scroll {
+    width: 100% !important;
+    height: auto !important;
+    float: none !important;
+    overflow: visible !important;
+}
+
+.goods-chart-body .order-confirm-panel .amount .amount-view {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+    float: none !important;
+}
+
+.goods-chart-body .order-confirm-panel .amount .amount-box {
+    float: none !important;
+    width: 100% !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    margin: 0 !important;
+    padding: 0 4px !important;
+    font-size: 12px !important;
+    border-radius: 8px !important;
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+}
+
+.goods-chart-body .order-confirm-panel .amount-view .amount-box[data-price=""],
+.goods-chart-body .order-confirm-panel .amount-view .amount-box[data-price="0"],
+.goods-chart-body .order-confirm-panel .amount-view .amount-box.goods-amount-empty {
+    display: none !important;
+}
+
+.goods-chart-body .order-confirm-panel .goods-order-submit-bar .expect_profit {
+    font-size: 12px !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap !important;
+}
+
+.goods-chart-body .order-confirm-panel .other-amount {
+    width: 100% !important;
+    float: none !important;
+    height: auto !important;
+    display: block !important;
+}
+
+.goods-chart-body .order-confirm-panel .other-amount input {
+    width: 100% !important;
+    height: 44px !important;
+    line-height: 44px !important;
+    font-size: 14px !important;
+    border-radius: 8px !important;
+    padding: 0 12px !important;
+    box-sizing: border-box !important;
+    border: 1px solid transparent !important;
+}
+
+.goods-chart-body .order-confirm-panel .other-amount.active input {
+    border-color: #3b7eff !important;
+}
+
+.goods-chart-body .order-confirm-panel .goods-order-balance-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 12px 14px !important;
+    margin: 0 -14px 12px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-radius: 10px !important;
+    width: calc(100% + 28px) !important;
+    box-sizing: border-box !important;
+}
+
+.goods-chart-body .order-confirm-panel .goods-order-balance-row .my-money {
+    font-size: 13px !important;
+    color: #b8b8c0 !important;
+}
+
+.goods-chart-body .order-confirm-panel .goods-order-balance-row .pay_mymoney {
+    color: #fff !important;
+    font-weight: 600 !important;
+}
+
+.goods-chart-body .order-confirm-panel .goods-order-allin {
+    min-width: 72px !important;
+    height: 34px !important;
+    line-height: 34px !important;
+    padding: 0 12px !important;
+    font-size: 12px !important;
+    border-radius: 8px !important;
+    margin: 0 !important;
+    float: none !important;
+}
+
+.goods-chart-body .order-confirm-panel .order-detail-view {
+    height: auto !important;
+    padding: 0 !important;
+    clear: both !important;
+    color: #e8e8ee !important;
+}
+
+.goods-chart-body .order-confirm-panel .order-detail-view .order-detail {
+    padding: 12px 10px 8px !important;
+    border-radius: 10px !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+}
+
+.goods-chart-body .order-confirm-panel .order-detail .fields {
+    margin-top: 0 !important;
+    margin-bottom: 6px !important;
+    height: auto !important;
+    line-height: 1.4 !important;
+    padding-bottom: 6px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.goods-chart-body .order-confirm-panel .order-detail .row {
+    height: auto !important;
+    min-height: 36px !important;
+    line-height: 1.5 !important;
+    padding: 4px 0 !important;
+}
+
+.goods-chart-body .order-confirm-panel .order-detail .row > div {
+    font-size: 13px !important;
+    padding: 0 4px !important;
+}
+
+.goods-chart-body .order-confirm-panel .order-detail .row > .qoute_name,
+.goods-chart-body .order-confirm-panel .order-detail .order-product-name {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #f5f5f8 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: none !important;
+    flex: 1.25 !important;
+    text-align: left !important;
+    padding-left: 8px !important;
+}
+
+.goods-chart-body .order-confirm-panel .expect_profit,
+.goods-chart-body .order-confirm-panel .goods-order-expect {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+}
+
+.goods-chart-body .order-confirm-panel .order-detail .fields > div,
+.goods-chart-body .order-confirm-panel .order-detail .row > div {
+    flex: 1 !important;
+    min-width: 0 !important;
+}
+
+.goods-chart-body .order-confirm-panel .order-detail .row {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.goods-chart-body .order-confirm-panel .btn_confirm {
+    margin-top: 14px !important;
+    margin-bottom: 4px !important;
+}
+
+/* 底部提交栏内的按钮样式见 .goods-order-submit-bar */
+.goods-chart-body .order-confirm-panel .panel-body .btn_confirm {
+    display: none !important;
+}
+
+.goods-chart-body .order-confirm-panel .btn_confirm .button {
+    width: 100% !important;
+    height: 46px !important;
+    line-height: 46px !important;
+    border-radius: 10px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+
+.goods-chart-body .order-confirm-panel .expect_profit {
+    margin-top: 10px !important;
+    padding-bottom: 4px !important;
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+    width: 100% !important;
+}
+
+.goods-chart-body .order-confirm-panel.is-manual-mode .panel-body {
+    padding-bottom: 20px !important;
+}
+
+/* ========== 下单成功：圆环倒计时 ========== */
+.goods-chart-body .order-state-panel.open .paysuccess.success,
+.goods-chart-body .order-state-panel.open .paysuccess.success .goods-order-countdown-wrap {
+    display: block !important;
+    visibility: visible !important;
+}
+
+.goods-chart-body .order-state-panel .goods-order-countdown-wrap {
+    padding: 8px 0 12px !important;
+    text-align: center !important;
+}
+
+.goods-chart-body .order-state-panel .goods-order-countdown {
+    position: relative !important;
+    width: 120px !important;
+    height: 120px !important;
+    margin: 0 auto 10px !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+}
+
+.goods-chart-body .order-state-panel .goods-countdown-num {
+    position: absolute !important;
+    z-index: 12 !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 100% !important;
+    text-align: center !important;
+    pointer-events: none !important;
+    display: flex !important;
+    align-items: baseline !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    visibility: visible !important;
+}
+
+.goods-chart-body .order-state-panel .goods-countdown-num .pay_order_sen {
+    display: inline-block !important;
+    visibility: visible !important;
+    font-size: 48px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    color: #ffd54f !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+}
+
+.goods-chart-body .order-state-panel .goods-countdown-unit {
+    display: inline-block !important;
+    margin-top: 0 !important;
+    font-size: 22px !important;
+    color: #ffe082 !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+}
+
+.goods-chart-body .order-state-panel .goods-order-countdown .right_circle,
+.goods-chart-body .order-state-panel .goods-order-countdown .left_circle {
+    z-index: 1 !important;
+}
+
+.goods-chart-body .order-state-panel .goods-countdown-meta {
+    display: flex !important;
+    align-items: baseline !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    margin-top: 4px !important;
+    font-size: 15px !important;
+}
+
+.goods-chart-body .order-state-panel .goods-countdown-meta-label {
+    color: #c8c8d4 !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+}
+
+.goods-chart-body .order-state-panel .goods-countdown-meta-price {
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    color: #ff4d5e !important;
+    letter-spacing: 0.02em !important;
+}
+
+/* 持仓倒计时：三列信息条，加大字号与对比度 */
+.goods-chart-body .order-state-panel.open .paysuccess.success .goods-order-info-strip {
+    display: flex !important;
+    align-items: stretch !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 12px 14px 0 !important;
+    padding: 14px 10px !important;
+    border: none !important;
+    border-top: none !important;
+    border-radius: 10px !important;
+    background: rgba(255, 255, 255, 0.07) !important;
+}
+
+.goods-chart-body .order-state-panel.open .paysuccess.success .goods-order-info-strip .col {
+    flex: 1 1 0 !important;
+    float: none !important;
+    width: auto !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 52px !important;
+    padding: 0 6px !important;
+    border: none !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.goods-chart-body .order-state-panel.open .paysuccess.success .goods-order-info-strip .col.first_info {
+    border-left: none !important;
+}
+
+.goods-chart-body .order-state-panel.open .paysuccess.success .goods-order-info-strip .goods-order-stat-label,
+.goods-chart-body .order-state-panel.open .paysuccess.success .goods-order-info-strip .col > p:nth-child(1) {
+    font-size: 14px !important;
+    color: #c4c4ce !important;
+    font-weight: 500 !important;
+    margin: 0 0 8px !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+}
+
+.goods-chart-body .order-state-panel.open .paysuccess.success .goods-order-info-strip .goods-order-stat-value,
+.goods-chart-body .order-state-panel.open .paysuccess.success .goods-order-info-strip .col > p:nth-child(2) {
+    font-size: 19px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin: 0 !important;
+    line-height: 1.25 !important;
+    text-align: center !important;
+}
+
+.goods-chart-body .order-state-panel.open .paysuccess.success .goods-order-info-strip .pay_order_type {
+    color: #ff5a6a !important;
+}
+
+.goods-chart-body .order-state-panel .button_row,
+.goods-chart-body .trade-view .order-state-panel .button_row {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    padding: 14px 16px 20px !important;
+    margin: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+}
+
+.goods-chart-body .order-state-panel.open .paysuccess.success .button_row .col,
+.goods-chart-body .order-state-panel .button_row .col {
+    flex: 0 1 auto !important;
+    width: 72% !important;
+    max-width: 280px !important;
+    min-width: 200px !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    float: none !important;
+}
+
+.goods-chart-body .order-state-panel.open .paysuccess.success .goods-btn-hold,
+.goods-chart-body .order-state-panel.open .paysuccess.success .button_row .button,
+.goods-chart-body .order-state-panel .goods-btn-hold {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 12px 20px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    border-radius: 10px !important;
+    background: #f5f5f7 !important;
+    color: #1a1a1e !important;
+    border: none !important;
+    text-align: center !important;
+}
+
+.goods-chart-body .order-state-panel .panel-body {
+    padding-bottom: 4px !important;
+}
+
+.goods-chart-body .order-state-panel.open .paysuccess.success .row.info_list {
+    margin-top: 8px !important;
+}

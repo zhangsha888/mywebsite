@@ -1,0 +1,59 @@
+/* GOODS_UI_BUILD:20260602b — 订单确认弹窗（PHP/JS 强制加载） */
+.period_footer,
+.period-widget-footer {
+    display: none !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.goods-chart-body .order-confirm-panel.open,
+.goods-order-overlays .order-confirm-panel.open,
+.pro_mengban.glass_mask .order-confirm-panel.open {
+    display: flex !important;
+    flex-direction: column !important;
+    max-height: 92vh !important;
+    overflow: hidden !important;
+    background-color: #1b1a1e !important;
+}
+
+.goods-chart-body .order-confirm-panel .panel-body,
+.pro_mengban.glass_mask .order-confirm-panel .panel-body {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    max-height: calc(92vh - 120px) !important;
+}
+
+.goods-order-submit-bar,
+#goods-order-submit-fallback {
+    display: block !important;
+    visibility: visible !important;
+    flex-shrink: 0 !important;
+    padding: 10px 14px calc(14px + env(safe-area-inset-bottom, 0px)) !important;
+    background: #1b1a1e !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 -6px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+.goods-order-submit-bar .goods-order-submit-btn,
+.goods-order-submit-bar .button,
+#goods-order-submit-fallback .button {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    height: 48px !important;
+    line-height: 48px !important;
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    background: linear-gradient(180deg, #4d9bff 0%, #3b7eff 100%) !important;
+}

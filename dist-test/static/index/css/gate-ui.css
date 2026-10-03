@@ -1,0 +1,229 @@
+/* 内部邀请码 / 安全码验证页 */
+html.gate-ui-root,
+html:has(.gate-ui-body) {
+    font-size: 16px !important;
+}
+
+.gate-ui-body {
+    margin: 0;
+    min-height: 100vh;
+    font-size: 16px !important;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: #1a1a1a;
+    -webkit-font-smoothing: antialiased;
+    background: #f0f2f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 18px;
+    box-sizing: border-box;
+}
+
+.gate-wrap {
+    width: 100%;
+    max-width: 400px;
+}
+
+.gate-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.gate-secure {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    font-size: 12px;
+    color: #389e0d;
+    font-weight: 600;
+}
+
+.gate-secure .dot {
+    width: 8px;
+    height: 8px;
+    background: #52c41a;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #52c41a;
+}
+
+.gate-lang {
+    padding: 6px 12px;
+    border: none;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    font-size: 12px;
+    color: #333;
+    cursor: pointer;
+    max-width: 52%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.gate-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.gate-brand .logo-circle {
+    width: 88px;
+    height: 88px;
+    border-radius: 22px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 8px 22px rgba(24, 80, 140, 0.14);
+    border: 3px solid rgba(255, 255, 255, 0.98);
+}
+
+.gate-brand .logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 19px;
+}
+
+.gate-brand .logo-circle .fallback {
+    color: #cf1322;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.gate-brand-text {
+    min-width: 0;
+    flex: 1;
+}
+
+.gate-brand-text h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.25;
+}
+
+.gate-brand-text p {
+    margin: 4px 0 0;
+    font-size: 11px;
+    color: #8c8c8c;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.35;
+}
+
+.gate-card {
+    position: relative;
+    background: #fff;
+    border-radius: 4px;
+    padding: 32px 28px 36px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.gate-card::before {
+    content: "";
+    position: absolute;
+    right: -20px;
+    top: 20px;
+    width: 140px;
+    height: 140px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath fill='%23ffccc7' opacity='0.45' d='M50 5 L90 25 L90 65 C90 90 50 115 50 115 C50 115 10 90 10 65 L10 25 Z'/%3E%3Cpath fill='%23ffa39e' opacity='0.5' d='M55 45 L70 55 L48 85 L35 60 Z'/%3E%3C/svg%3E") no-repeat center;
+    background-size: contain;
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+.gate-title {
+    margin: 0 0 28px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: 0.02em;
+    position: relative;
+    z-index: 1;
+}
+
+.gate-field {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 8px;
+}
+
+.gate-field label {
+    display: block;
+    font-size: 14px;
+    color: #595959;
+    margin-bottom: 10px;
+}
+
+.gate-field input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 16px;
+    font-size: 15px;
+    border: 1px solid #1890ff;
+    border-radius: 24px;
+    outline: none;
+    background: #fff;
+    color: #1a1a1a;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.gate-field input:focus {
+    box-shadow: 0 0 0 3px rgba(24, 144, 255, 0.15);
+}
+
+.gate-field input::placeholder {
+    color: #bfbfbf;
+}
+
+.gate-divider {
+    height: 1px;
+    background: #f0f0f0;
+    margin: 20px 0 24px;
+    position: relative;
+    z-index: 1;
+}
+
+.gate-submit {
+    display: block;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 28px;
+    background: #1890ff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.2em;
+    text-indent: 0.2em;
+    box-shadow: 0 4px 14px rgba(24, 144, 255, 0.35);
+    transition: background 0.2s, opacity 0.2s;
+}
+
+.gate-submit:hover {
+    background: #40a9ff;
+}
+
+.gate-submit:active {
+    opacity: 0.9;
+}
+
+.gate-submit:disabled {
+    background: #91d5ff;
+    cursor: not-allowed;
+}

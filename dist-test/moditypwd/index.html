@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>设置</title>
+    <link rel="stylesheet" href="/static/index/css/form-ui.css"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+</head>
+<body class="form-ui-body">
+<div class="form-ui-page">
+    <header class="form-ui-header"><button type="button" class="form-ui-back" onclick="history.back()">‹</button><h1>信息修改</h1></header>
+    <div class="form-ui-scroll">
+        <section class="pwd-section">
+            <h2 class="pwd-section-title">登录密码</h2>
+            <div class="pwd-field"><label for="oldpwd">旧登录密码</label><input type="password" id="oldpwd"></div>
+            <div class="pwd-field"><label for="newpwd">新登录密码</label><input type="password" id="newpwd"></div>
+            <div class="pwd-field"><label for="surepwd">确认密码</label><input type="password" id="surepwd"></div>
+            <button type="button" class="pwd-submit login" id="btnLoginPwd">确认修改密码</button>
+        </section>
+        <section class="pwd-section">
+            <h2 class="pwd-section-title">支付密码</h2>
+            <div class="pwd-field"><label for="oldtxpwd">旧支付密码</label><input type="password" id="oldtxpwd"></div>
+            <div class="pwd-field"><label for="newtxpwd">新支付密码</label><input type="password" id="newtxpwd"></div>
+            <div class="pwd-field"><label for="suretxpwd">确认密码</label><input type="password" id="suretxpwd"></div>
+            <button type="button" class="pwd-submit pay" id="btnPayPwd">确认修改支付密码</button>
+        </section>
+    </div>
+</div>
+<script src="/static/layer/layer.js"></script>
+<script src="/static/index/js/settings-pwd.js?v=20260714p"></script>
+<script>
+$(function () {
+    H5.installAjaxHook();
+    if (!H5.requireAuth()) return;
+});
+</script>
+</body>
+</html>

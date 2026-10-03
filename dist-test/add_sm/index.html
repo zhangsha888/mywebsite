@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>实名认证</title>
+    <link rel="stylesheet" href="/static/index/css/sm-ui.css"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+    <script>document.documentElement.className += ' sm-ui-root';</script>
+</head>
+<body class="sm-ui-body">
+<div class="sm-ui-page">
+    <header class="sm-ui-header">
+        <button type="button" class="sm-ui-back" id="smBackBtn" aria-label="返回">‹</button>
+        <h1>实名认证</h1>
+    </header>
+    <div class="sm-ui-card">
+        <p class="sm-ui-tip">请填写真实姓名与身份证号。身份证照片可选上传。</p>
+        <form id="smForm">
+            <div class="sm-ui-field"><label>真实姓名</label><input type="text" id="smUname" name="uname" maxlength="20"></div>
+            <div class="sm-ui-field"><label>身份证号码</label><input type="text" id="smIdcard" name="idcard" maxlength="18"></div>
+            <div class="sm-ui-field"><label>手机号</label><input type="tel" id="smPhone" name="phone" maxlength="11"></div>
+            <div class="sm-upload-row">
+                <div class="sm-upload-box" id="boxFront"><input type="file" accept="image/*" id="fileFront"><div class="placeholder"><div class="icon">🪪</div><p>正面</p></div><img class="preview" id="previewFront" alt=""></div>
+                <div class="sm-upload-box" id="boxBack"><input type="file" accept="image/*" id="fileBack"><div class="placeholder"><div class="icon">🪪</div><p>反面</p></div><img class="preview" id="previewBack" alt=""></div>
+            </div>
+            <input type="hidden" id="idcardFront" value=""><input type="hidden" id="idcardBack" value="">
+            <button type="button" class="sm-ui-submit" id="smSubmit">提交认证</button>
+        </form>
+    </div>
+</div>
+<script src="/static/layer/layer.js"></script>
+<script src="/static/index/js/sm-form.js"></script>
+<script>$(function(){ H5.installAjaxHook(); if(!H5.requireAuth()) return; $('#smBackBtn').on('click',function(){ location.href=H5.pageUrl('mine.html'); }); H5.apiRequest('GET','/index/h5api/sm_status').then(function(res){ if(res&&res.code===1){ if(res.data.has_record){ location.replace(H5.pageUrl('sm_status.html')); return; } var phone = res.data.real_utel || res.data.utel || ''; if(phone){ $('#smPhone').val(phone); } } }); });</script>
+</body>
+</html>

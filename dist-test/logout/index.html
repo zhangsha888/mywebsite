@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>退出登录</title>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+</head>
+<body>
+<p style="padding:24px;text-align:center;color:#666;font-family:sans-serif;">正在退出…</p>
+<script>
+(function () {
+    function goLogin() {
+        var url = (window.H5 && H5.pageUrl) ? H5.pageUrl('login.html') : '/login.html';
+        window.location.replace(url);
+    }
+    try {
+        if (window.H5 && H5.installAjaxHook) {
+            H5.installAjaxHook();
+        }
+        if (window.H5 && H5.apiRequest) {
+            H5.apiRequest('POST', '/index/h5api/logout', null, { skipAuthRedirect: true })
+                .always(function () {
+                    if (window.H5) {
+                        H5.clearAuth();
+                    }
+                    goLogin();
+                });
+            return;
+        }
+    } catch (e) {}
+    try {
+        if (window.H5) {
+            H5.clearAuth();
+        } else {
+            localStorage.removeItem('h5_auth_token');
+            localStorage.removeItem('h5_auth_user');
+        }
+    } catch (err) {}
+    goLogin();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="/static/index/css/i18n-ui.css?v=20260603"/>
+    <link rel="stylesheet" href="/static/index/css/home-ui.css?v=20260615a"/>
+    <link rel="stylesheet" href="/static/index/css/mine-ui.css"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+    <script src="/static/index/js/h5-app.js"></script>
+</head>
+<body class="mine-ui-body" style="font-size: 16px;">
+<div id="app" class="mine-ui-page">
+    <div class="mine-ui-profile">
+        <div class="mine-ui-user">
+            <h2>—</h2>
+            <div class="mine-ui-account">账号：<span id="mineAccount">—</span></div>
+            <div class="mine-ui-phone-row">
+                <span class="mine-ui-phone" id="minePhone">—</span>
+                <span class="mine-ui-badge-level">🛡 —</span>
+            </div>
+            <span class="mine-ui-badge-credit">🌿 信用分:100</span>
+        </div>
+        <div class="mine-ui-invite">ID <strong id="inviteCode">—</strong>
+            <button type="button" class="copy-btn" onclick="copyInviteCode()">📋</button>
+        </div>
+    </div>
+    <div class="mine-ui-asset-card">
+        <div class="mine-ui-asset-top"><span class="label">总资产(CNY)</span><span class="mine-ui-currency-tag">🪙 CNY</span></div>
+        <div class="mine-ui-balance"><sub>¥</sub> <span id="totalBalance">0</span></div>
+        <div class="mine-ui-usdt">≈<span id="usdtApprox">0</span>USDT</div>
+        <div class="mine-ui-profit-row">
+            <div class="mine-ui-profit-item"><span class="label">账户盈亏</span><span class="value" id="totalPloss">0</span></div>
+            <div class="mine-ui-profit-item"><span class="label">今日盈亏</span><span class="value" id="todayPloss">0</span></div>
+        </div>
+    </div>
+    <div class="mine-ui-actions">
+        <div class="mine-ui-balance-box"><div class="label">可用余额(CNY)</div><div class="amount">¥ 0</div></div>
+        <a href="/deposit.html" class="mine-ui-action-btn deposit"><span class="icon">📥</span><span>入金</span></a>
+        <a href="/withdraw.html" class="mine-ui-action-btn withdraw"><span class="icon">📤</span><span>出金</span></a>
+    </div>
+    <div class="mine-ui-menu">
+        <a href="/historynotice.html" class="mine-ui-menu-item">
+            <span class="menu-icon blue">💬</span><span class="menu-label">站内信</span>
+            <span class="mine-ui-msg-badge" id="mineMsgBadge">0</span><span class="menu-arrow">›</span>
+        </a>
+        <a href="/signin.html" class="mine-ui-menu-item">
+            <span class="menu-icon orange">📅</span><span class="menu-label">每日签到</span><span class="menu-arrow">›</span>
+        </a>
+        <a href="/jijinbao.html" class="mine-ui-menu-item" id="mineJijinbaoLink" style="display:none;">
+            <span class="menu-icon pink">💎</span><span class="menu-label">利息宝</span><span class="menu-arrow">›</span>
+        </a>
+        <a href="/sm_status.html" class="mine-ui-menu-item">
+            <span class="menu-icon orange">🪪</span><span class="menu-label">实名认证</span><span class="menu-arrow">›</span>
+        </a>
+        <a href="/hold.html" class="mine-ui-menu-item">
+            <span class="menu-icon blue">📋</span><span class="menu-label">订单记录</span><span class="menu-arrow">›</span>
+        </a>
+        <a href="/deposit_record.html" class="mine-ui-menu-item">
+            <span class="menu-icon blue">📥</span><span class="menu-label">入金明细</span><span class="menu-arrow">›</span>
+        </a>
+        <a href="/withdraw_record.html" class="mine-ui-menu-item">
+            <span class="menu-icon blue">📤</span><span class="menu-label">出金明细</span><span class="menu-arrow">›</span>
+        </a>
+        <a href="/accountrecord.html" class="mine-ui-menu-item">
+            <span class="menu-icon pink">💰</span><span class="menu-label">资金记录</span><span class="menu-arrow">›</span>
+        </a>
+        <a href="/bankcard.html" class="mine-ui-menu-item">
+            <span class="menu-icon green">💳</span><span class="menu-label">出款账户</span><span class="menu-arrow">›</span>
+        </a>
+        <a href="/add_usdt.html" class="mine-ui-menu-item">
+            <span class="menu-icon green">₮</span><span class="menu-label">绑定 USDT</span><span class="menu-arrow">›</span>
+        </a>
+        <a href="/inquiries.html" class="mine-ui-menu-item">
+            <span class="menu-icon blue">🔍</span><span class="menu-label">平仓查询</span><span class="menu-arrow">›</span>
+        </a>
+        <a href="/moditypwd.html" class="mine-ui-menu-item">
+            <span class="menu-icon purple">⚙️</span><span class="menu-label">设置</span><span class="menu-arrow">›</span>
+        </a>
+        <a href="javascript:;" class="mine-ui-menu-item" id="mineLangBtn">
+            <span class="menu-icon blue">🌐</span><span class="menu-label">语言</span><span class="menu-arrow">›</span>
+        </a>
+        <a href="javascript:;" id="mineLogout" class="mine-ui-menu-item logout">
+            <span class="menu-icon">🚪</span><span class="menu-label">退出登录</span><span class="menu-arrow">›</span>
+        </a>
+    </div>
+</div>
+<div id="h5-tabbar"></div>
+<script src="/static/index/js/i18n.js"></script>
+<script src="/js/pages/mine.js?v=20260916y"></script>
+<script>$(function(){ H5PageMine.init(); });</script>
+</body>
+</html>

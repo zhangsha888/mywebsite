@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="login-ui-root">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>登录</title>
+    <link rel="stylesheet" href="/static/index/css/login-ui.css?v=20260916v"/>
+    <link rel="stylesheet" href="/static/index/css/i18n-ui.css?v=20260603"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+    <script src="/static/index/js/h5-app.js"></script>
+</head>
+<body class="login-page-body">
+<form id="loginForm" class="login-page" autocomplete="off">
+    <div class="login-topbar">
+        <span class="login-secure"><span class="dot"></span> Secure</span>
+        <button type="button" class="login-lang ui-lang-trigger">🌐 简体中文</button>
+    </div>
+    <div class="login-brand">
+        <div class="login-logo-wrap"><span class="logo-fallback" style="opacity:.35">·</span></div>
+        <h1>&nbsp;</h1>
+        <p class="en" style="display:none">CERTIFICATION INTERNATIONAL</p>
+    </div>
+    <div class="login-form-card">
+        <span class="login-ssl">SSL</span>
+        <h2 class="login-form-title">账户登录</h2>
+        <p class="login-form-sub">请输入账号和密码</p>
+        <div class="login-field">
+            <label for="username">账号</label>
+            <div class="login-input-wrap">
+                <span class="ico">👤</span>
+                <input type="text" id="username" name="username" placeholder="请输入账号" required>
+            </div>
+        </div>
+        <div class="login-field">
+            <label for="pwd">密码</label>
+            <div class="login-input-wrap">
+                <span class="ico">🔒</span>
+                <input type="password" id="pwd" name="pwd" placeholder="请输入密码" required autocomplete="current-password">
+                <button type="button" class="login-pwd-toggle" id="pwdToggle">显示</button>
+            </div>
+        </div>
+        <button type="submit" class="login-submit" id="loginSubmit">登录</button>
+        <div class="login-footer-links">
+            <a href="/register.html">立即开户</a>
+            <span class="sep">|</span>
+            <a href="javascript:;" id="loginForgotPwd">忘记密码</a>
+        </div>
+    </div>
+</form>
+<script src="/static/index/js/i18n.js"></script>
+<script src="/js/pages/login.js"></script>
+<script>$(function(){ H5PageLogin.init(); });</script>
+</body>
+</html>

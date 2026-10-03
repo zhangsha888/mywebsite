@@ -1,0 +1,114 @@
+/**
+ * 列表/记录类页面统一滚动（覆盖 ionic 的 html/body overflow:hidden）
+ * 用于：入金/出金/资金记录、平仓查询、订单记录、站内信、公告等
+ */
+html.scroll-list-root,
+html.form-ui-root,
+html:has(.form-ui-body),
+html.mail-ui-root,
+html:has(.mail-ui-body),
+html.order-ui-root,
+html:has(.order-ui-body),
+html.jijin-ui-root,
+html:has(.jijin-ui-body),
+html.deposit-ui-root,
+html:has(.deposit-ui-body) {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    height: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+.scroll-list-body,
+.form-ui-body,
+.mail-ui-body,
+.order-ui-body,
+.jijin-ui-body,
+.deposit-ui-body {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    height: auto !important;
+    min-height: 100vh;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: calc(72px + env(safe-area-inset-bottom)) !important;
+    box-sizing: border-box;
+}
+
+/* 平仓查询 / 设置页：内容区可滚动 */
+.form-ui-body .form-ui-page {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 72px);
+    max-height: none;
+}
+
+.form-ui-body .form-ui-header {
+    flex-shrink: 0;
+}
+
+.form-ui-body .form-ui-scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding: 12px 14px 24px;
+    box-sizing: border-box;
+}
+
+/* 资金记录卡片列表 */
+.deposit-ui-body .deposit-ui-page,
+.deposit-ui-body .fund-record-list {
+    overflow: visible;
+}
+
+.deposit-ui-body .fund-record-list {
+    padding-bottom: 8px;
+}
+
+/* 站内信 / 公告列表 */
+.mail-ui-body .mail-ui-page {
+    overflow: visible;
+    padding-bottom: 16px;
+}
+
+.mail-ui-body .mail-ui-list {
+    padding-bottom: 8px;
+}
+
+.mail-ui-body .mail-ui-detail-card {
+    margin-bottom: 16px;
+}
+
+/* 订单记录：避免 ion 容器锁死高度 */
+.order-ui-body #app,
+.order-ui-body #app .box {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+}
+
+.order-ui-body .trade_history.order-page,
+.order-ui-body .trade_history.order-page.scroll-content {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: calc(100vh - 120px) !important;
+}
+
+.order-ui-body .order-list-wrap,
+.order-ui-body .trade_history_list.order-list-wrap {
+    overflow: visible !important;
+    max-height: none !important;
+    padding: 0 0 16px !important;
+    min-height: 120px;
+}
+
+/* 固定底栏不挡内容 */
+.home-ui-tabbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+}

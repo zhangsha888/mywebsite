@@ -1,0 +1,255 @@
+/* 站内信 — 清晰字体与独立排版（不受 html font-size:40 影响） */
+html:has(.mail-ui-body),
+html.mail-ui-root {
+    font-size: 16px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    height: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mail-ui-body {
+    margin: 0;
+    min-height: 100vh;
+    height: auto !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    font-size: 16px !important;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    color: #1f1f1f;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background: linear-gradient(180deg, #c5e3f5 0%, #dceef8 22%, #eef5fb 50%, #f8fafc 100%);
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+    box-sizing: border-box;
+}
+
+.mail-ui-page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 14px 24px;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+.mail-ui-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 14px 44px;
+    margin-bottom: 12px;
+}
+
+.mail-ui-back {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+    font-size: 24px;
+    line-height: 1;
+    color: #1a1a1a;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.mail-ui-header h1 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: 0.02em;
+}
+
+.mail-ui-header .mail-unread-badge {
+    font-size: 13px;
+    font-weight: 500;
+    color: #ff4d4f;
+    margin-left: 4px;
+}
+
+.mail-ui-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mail-ui-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.07);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.2s ease;
+}
+
+.mail-ui-card:active {
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mail-ui-card.is-unread {
+    border-left: 4px solid #1890ff;
+    background: linear-gradient(90deg, #f0f7ff 0%, #fff 12%);
+}
+
+.mail-ui-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.mail-ui-title {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    line-height: 1.45;
+    letter-spacing: 0.01em;
+    min-width: 0;
+    word-break: break-word;
+}
+
+.mail-ui-dot {
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    margin-top: 6px;
+    margin-right: 6px;
+    background: #ff4d4f;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.mail-ui-status {
+    flex-shrink: 0;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    line-height: 1.2;
+}
+
+.mail-ui-status.unread {
+    background: #fff7e6;
+    color: #d46b08;
+}
+
+.mail-ui-status.read {
+    background: #f6ffed;
+    color: #389e0d;
+}
+
+.mail-ui-summary {
+    margin: 0 0 12px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #595959;
+    line-height: 1.65;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.mail-ui-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #8c8c8c;
+    padding-top: 10px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.mail-ui-meta .time {
+    font-weight: 500;
+    color: #737373;
+}
+
+.mail-ui-empty {
+    text-align: center;
+    padding: 56px 24px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.mail-ui-empty-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+    opacity: 0.5;
+}
+
+.mail-ui-empty p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #595959;
+}
+
+.mail-ui-empty .sub {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #8c8c8c;
+    font-weight: 400;
+}
+
+/* 详情页 */
+.mail-ui-detail-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 20px 18px;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.07);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.mail-ui-detail-title {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.45;
+    letter-spacing: 0.01em;
+}
+
+.mail-ui-detail-time {
+    margin: 0 0 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #8c8c8c;
+}
+
+.mail-ui-detail-content {
+    font-size: 16px;
+    font-weight: 400;
+    color: #262626;
+    line-height: 1.85;
+    letter-spacing: 0.02em;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.mail-ui-detail-empty {
+    text-align: center;
+    padding: 48px 20px;
+    font-size: 16px;
+    color: #8c8c8c;
+    background: #fff;
+    border-radius: 14px;
+}

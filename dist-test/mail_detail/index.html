@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>消息详情</title>
+    <link rel="stylesheet" href="/static/index/css/mail-ui.css"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+</head>
+<body class="mail-ui-body">
+<div class="mail-ui-page">
+    <header class="mail-ui-header">
+        <button type="button" class="mail-ui-back" onclick="history.back()">‹</button>
+        <h1 id="mailTitle">消息详情</h1>
+    </header>
+    <div class="mail-detail-body" id="mailBody" style="padding:16px;line-height:1.6;">加载中...</div>
+    <div class="mail-ui-meta" style="padding:0 16px 24px;color:#999;" id="mailTime"></div>
+</div>
+<script src="/js/pages/mail-detail.js"></script>
+</body>
+</html>

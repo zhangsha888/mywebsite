@@ -1,0 +1,559 @@
+/**
+ * 全站浅色底图主题（与首页/个人中心/订单记录参考图一致）
+ * 覆盖各页面内嵌的深色 background，避免黑底不协调
+ */
+
+/* ========== 页面底图 ========== */
+html:not(.goods-chart-root),
+body:not(.reg-page-body):not(.goods-chart-body) {
+    background: linear-gradient(180deg, #c5e3f5 0%, #dceef8 22%, #eef5fb 50%, #f8fafc 100%) !important;
+    background-color: #eef5fb !important;
+    background-attachment: fixed !important;
+    min-height: 100vh;
+}
+
+body:not(.reg-page-body):not(.home-ui-body):not(.mine-ui-body):not(.trade-ui-body):not(.mail-ui-body):not(.jijin-ui-body):not(.sm-ui-body):not(.deposit-ui-body):not(.goods-chart-body):not(.form-ui-body):not(.order-ui-body):not(.scroll-list-body)::before,
+body:not(.reg-page-body):not(.home-ui-body):not(.mine-ui-body):not(.trade-ui-body):not(.mail-ui-body):not(.jijin-ui-body):not(.sm-ui-body):not(.deposit-ui-body):not(.goods-chart-body):not(.form-ui-body):not(.order-ui-body):not(.scroll-list-body)::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+body:not(.reg-page-body):not(.home-ui-body):not(.mine-ui-body):not(.trade-ui-body):not(.mail-ui-body):not(.jijin-ui-body):not(.sm-ui-body):not(.deposit-ui-body):not(.goods-chart-body):not(.form-ui-body):not(.order-ui-body):not(.scroll-list-body)::before {
+    width: 180px;
+    height: 180px;
+    top: 8%;
+    right: -40px;
+    background: rgba(255, 255, 255, 0.45);
+}
+body:not(.reg-page-body):not(.home-ui-body):not(.mine-ui-body):not(.trade-ui-body):not(.mail-ui-body):not(.jijin-ui-body):not(.sm-ui-body):not(.deposit-ui-body):not(.goods-chart-body):not(.form-ui-body):not(.order-ui-body):not(.scroll-list-body)::after {
+    width: 120px;
+    height: 120px;
+    top: 35%;
+    left: -30px;
+    background: rgba(24, 144, 255, 0.06);
+}
+
+#app,
+#app .box,
+.jun-content,
+.f_box_mine,
+.f_box_mine .f_mine_box,
+.f_mine,
+.f_table,
+.t_box,
+.t_box.slide,
+.t_table,
+.t_con_home,
+.signin-view,
+.signin-view.pane,
+.view-container,
+.pane,
+ion-view,
+ion-content,
+.trade-view,
+.trade_history,
+.trade_history_list,
+.content-background,
+.has-header,
+.has-tabs,
+.order-modal-content,
+.el-main,
+.wytouzi,
+.bazaar,
+.pay_box {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* 深色大块背景强制改透明或浅色 */
+[style*="background: #111"],
+[style*="background:#111"],
+[style*="background-color: #181f2f"],
+[style*="background-color:#181f2f"],
+[style*="background-color: #111723"],
+[style*="background-color:#111723"],
+[style*="background-color: #222629"],
+[style*="background: #110e1f"] {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+.f_box_mine .f_mine_box .f_mine,
+.f_box_mine {
+    background: transparent !important;
+    color: #333 !important;
+}
+
+.f_box_mine .f_mine_box .f_mine p span,
+.f_box_mine .f_mine_box .f_tab1 span p {
+    color: #333 !important;
+}
+
+/* ========== 顶栏 ========== */
+.t_header,
+.bar-stable.headerbar,
+ion-header-bar.bar-stable,
+.order-modal-header {
+    background: rgba(255, 255, 255, 0.92) !important;
+    background-color: rgba(255, 255, 255, 0.92) !important;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06) !important;
+    border-bottom: none !important;
+}
+
+.t_header span:last-child i,
+.t_header span:last-child,
+.title,
+.hangqing,
+.jiaoyilishi,
+.header-item {
+    color: #333 !important;
+}
+
+/* ========== 列表/卡片 ========== */
+.t_con_home_ul,
+.t_lineher,
+.trade_history_list ul li,
+.trade_history_list .uls li,
+.f_table .el-col,
+.mine-ui-pro-list .t_con_home_ul,
+.account-list li,
+.bank-list li,
+.invest-item,
+.wytouzi .item,
+.bazaar .item {
+    background: rgba(255, 255, 255, 0.92) !important;
+    background-image: none !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+    color: #333 !important;
+}
+
+.t_lineher {
+    background: #e8ecf0 !important;
+    color: #666 !important;
+}
+
+.t_con_home_ul span,
+.trade_history_list ul li span {
+    color: #333 !important;
+}
+
+/* 订单记录列表：去掉 ul 黑底，避免圆角卡片四角露黑 */
+.trade_history_list ul,
+.trade_history_list .uls {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    padding: 0 12px !important;
+    box-sizing: border-box !important;
+}
+
+.trade_history_list ul li:not(.order-card):not(.order-empty),
+.trade_history_list .uls li:not(.order-card):not(.order-empty) {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    height: auto !important;
+    margin-bottom: 10px !important;
+    padding: 12px 12px 10px !important;
+    box-sizing: border-box !important;
+    color: #333 !important;
+}
+
+.trade_history_list .order-card-list li.order-card {
+    min-height: 128px !important;
+    height: auto !important;
+    padding: 14px 14px 12px !important;
+}
+
+.trade_history_list ul li section,
+.trade_history_list ul li p,
+.trade_history_list .uls li section,
+.trade_history_list .uls li p {
+    color: #333 !important;
+}
+
+.trade_history_list ul li section:nth-of-type(1) p:nth-of-type(3) {
+    color: #999 !important;
+}
+
+.trade_history_list ul li article {
+    background: transparent !important;
+}
+
+.trade_history_list ul li article span.move_width {
+    background: linear-gradient(90deg, #bae7ff, #1890ff) !important;
+    height: 3px !important;
+}
+
+.trade_history_list .slider-slides,
+.trade_history_list .slider-slide {
+    background: transparent !important;
+}
+
+/* 订单页 Tab：持仓明细 / 历史明细 */
+.trade_history header,
+.trade_history > header {
+    display: flex !important;
+    align-items: stretch !important;
+    gap: 6px !important;
+    box-sizing: border-box !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 44px !important;
+    padding: 4px !important;
+    margin: 12px 14px !important;
+    background: rgba(255, 255, 255, 0.72) !important;
+    border-radius: 22px !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.9) !important;
+    overflow: hidden !important;
+    position: relative !important;
+    border: none !important;
+    border-bottom: none !important;
+}
+
+.trade_history header article,
+.trade_history > header article {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 10px 6px !important;
+    margin: 0 !important;
+    border: none !important;
+    border-bottom: none !important;
+    border-radius: 18px !important;
+    background: transparent !important;
+    color: #888 !important;
+    cursor: pointer;
+    box-sizing: border-box !important;
+}
+
+.trade_history header article:nth-of-type(1) p,
+.trade_history > header article:nth-of-type(1) p {
+    border-right: none !important;
+}
+
+.trade_history header article.active,
+.trade_history > header article.active,
+.trade_history header .left-table.active,
+.trade_history header .right-table.active {
+    background: #fff !important;
+    color: #1890ff !important;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+.trade_history header article p,
+.trade_history > header article p {
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    line-height: 1.35 !important;
+    font-size: 14px !important;
+    color: inherit !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 空状态 */
+.trade_history_list:empty::after,
+.trade_history_list ul:empty::after {
+    content: "暂无订单记录";
+    display: block;
+    text-align: center;
+    color: #999;
+    padding: 60px 20px;
+    font-size: 14px;
+}
+
+/* ========== 底部导航（旧 .footer 统一为浅色） ========== */
+.box .footer,
+.footer {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    height: 56px !important;
+    background: #fff !important;
+    background-color: #fff !important;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-around !important;
+    z-index: 1000 !important;
+    padding-bottom: env(safe-area-inset-bottom);
+    border-top: none !important;
+}
+
+.box .footer > div,
+.footer > div {
+    flex: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.box .footer > div a,
+.footer > div a {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    color: #666 !important;
+    font-size: 10px !important;
+    padding: 4px 0 !important;
+    background: none !important;
+}
+
+.box .footer > div a span,
+.footer > div a span {
+    color: #666 !important;
+    font-size: 10px !important;
+    margin-top: 2px !important;
+}
+
+.box .footer > div a.router-link-exact-active span,
+.box .footer > div a.router-link-active span,
+.footer > div a.tab-active span {
+    color: #1890ff !important;
+}
+
+.box .footer > div a i,
+.footer > div a i {
+    width: 22px !important;
+    height: 22px !important;
+    margin-top: 0 !important;
+    opacity: 0.7;
+}
+
+/* 有新版 Tab 时隐藏旧 footer */
+body.home-ui-body .footer,
+body.mine-ui-body .box .footer {
+    display: none !important;
+}
+
+/* ========== 表单/弹层 ========== */
+.el-dialog,
+.order-modal,
+.remakecon,
+.login_box,
+.t_box_login .login_box ul li input {
+    border-radius: 12px;
+}
+
+.order-modal.modal,
+.modal-wrapper .order-modal {
+    background: #fff !important;
+}
+
+.item.item-input,
+.list .item {
+    background: #fafafa !important;
+    color: #333 !important;
+    border-color: #f0f0f0 !important;
+}
+
+/* ========== 内容区底部留白（避免被导航挡住） ========== */
+.jun-content,
+.f_mine_box,
+.trade_history_list,
+.t_table,
+.f_table {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom)) !important;
+}
+
+/* ionic 深色条 */
+.bar-stable,
+.tabs-standard {
+    background: transparent !important;
+}
+
+.platform-browser .bar-header {
+    background: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* ========== 产品下单页（与 goods-chart-ui 配套，写在 app-theme 确保覆盖前文）========== */
+html.goods-chart-root,
+body.goods-chart-body {
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow-x: hidden !important;
+    background: linear-gradient(180deg, #c5e3f5 0%, #dceef8 28%, #eef5fb 55%, #f5f8fb 100%) !important;
+    background-attachment: scroll !important;
+}
+
+body.goods-chart-body #app,
+body.goods-chart-body .box,
+body.goods-chart-body .trade-view,
+body.goods-chart-body .trade-view.pane,
+body.goods-chart-body ion-view {
+    min-height: 0 !important;
+    height: auto !important;
+}
+
+body.goods-chart-body .trade-content footer.goods-chart-area,
+body.goods-chart-body .goods-chart-area {
+    width: auto !important;
+    margin: 0 12px 8px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+}
+
+body.goods-chart-body #container,
+body.goods-chart-body #ecKx {
+    height: 280px !important;
+    max-height: 280px !important;
+    background: #fff !important;
+}
+
+body.goods-chart-body .trade-view .history-panel,
+body.goods-chart-body .history-panel:not(.is-visible) {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: fixed !important;
+    left: -9999px !important;
+    width: 0 !important;
+}
+
+body.goods-chart-body .order_mengban:not(.glass_mask),
+body.goods-chart-body .pro_mengban:not(.glass_mask) {
+    display: none !important;
+}
+
+body.goods-chart-body .order-state-panel:not(.open),
+body.goods-chart-body .order-state-panel:not(.open) * {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+body.goods-chart-body .order-state-panel.open {
+    display: block !important;
+    visibility: visible !important;
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    z-index: 10001 !important;
+    width: 90% !important;
+    max-width: 420px !important;
+}
+
+body.goods-chart-body .order-confirm-panel.open {
+    display: block !important;
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 10001 !important;
+}
+
+body.goods-chart-body .order-state-panel .panel-body,
+body.goods-chart-body .order-confirm-panel .panel-body {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+}
+
+body.goods-chart-body .order-state-panel .button_row {
+    position: relative !important;
+    bottom: auto !important;
+}
+
+body.goods-chart-body .goods-order-overlays {
+    display: none !important;
+}
+
+body.goods-chart-body #app > .box > .app-footer-nav,
+body.goods-chart-body #app > .box > nav.footer {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+body.goods-chart-body ion-content.trade-content.scroll-content {
+    position: fixed !important;
+    top: 44px !important;
+    bottom: calc(56px + env(safe-area-inset-bottom, 0px)) !important;
+    left: 0 !important;
+    right: 0 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+body.goods-chart-body .trade-content .scroll.goods-page-scroll {
+    display: block !important;
+    min-height: auto !important;
+    padding-bottom: 24px !important;
+}
+
+body.goods-chart-body .goods-trade-bar,
+body.goods-chart-body .trade-view .trade_bar.goods-trade-bar {
+    position: relative !important;
+    bottom: auto !important;
+    height: auto !important;
+    min-height: 48px !important;
+    margin: 12px 12px 8px !important;
+}
+
+body.goods-chart-body.order-panel-open .goods-order-overlays,
+body.goods-chart-body.order-state-open .goods-order-overlays {
+    display: block !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 9999 !important;
+}
+
+body.goods-chart-body .trade_history_list {
+    padding-bottom: 0 !important;
+}
+
+/* ========== 产品交易列表页 trade-ui（覆盖 ionic 锁滚动）========== */
+html.trade-ui-root,
+html:has(.trade-ui-body) {
+    height: 100% !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    touch-action: pan-y !important;
+}
+
+body.trade-ui-body {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    overflow: hidden !important;
+    touch-action: pan-y !important;
+}
+
+body.trade-ui-body .trade-ui-page {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-y !important;
+}

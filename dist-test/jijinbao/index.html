@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>利息宝</title>
+    <link rel="stylesheet" href="/static/index/css/jijin-ui.css"/>
+    <link rel="stylesheet" href="/static/index/css/scroll-list-ui.css"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+    <script src="/static/index/js/h5-app.js"></script>
+    <script>document.documentElement.className += ' jijin-ui-root scroll-list-root';</script>
+</head>
+<body class="jijin-ui-body scroll-list-body" style="font-size: 16px;">
+<div class="jijin-ui-page">
+    <header class="jijin-ui-header">
+        <button type="button" class="jijin-ui-back" onclick="history.back()" aria-label="返回">‹</button>
+        <h1>利息宝</h1>
+        <a href="/jijin_log.html" class="jijin-ui-header-link">我的投资</a>
+    </header>
+    <div class="jijin-balance-card">
+        <div class="jijin-balance-label">账户余额(元)</div>
+        <div class="jijin-balance-amount" id="jijinBalance">0.00</div>
+        <div class="jijin-balance-sub" id="jijinBalanceSub">可提现 0.00 · 理财冻结 0.00</div>
+    </div>
+    <div class="jijin-log-list" id="jijinProductList" style="margin-top:12px;">
+        <div class="jijin-empty">加载中...</div>
+    </div>
+    <div class="jijin-rules-card">
+        <h3>说明</h3>
+        <p id="jijinDaysText" style="display:none;"></p>
+        <p>购买后本金冻结在账户中，不影响下单交易，但不可提现。</p>
+        <p>利息在购买时预先计算，到期后自动结算至余额。</p>
+        <p>每笔投资独立计期，到期后可提现对应本金及利息。</p>
+    </div>
+</div>
+<script src="/static/layer/layer.js"></script>
+<script src="/js/pages/jijinbao.js"></script>
+<script>$(function(){ H5PageJijinbao.init(); });</script>
+</body>
+</html>

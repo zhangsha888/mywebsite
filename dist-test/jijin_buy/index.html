@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>利息宝转入</title>
+    <link rel="stylesheet" href="/static/index/css/jijin-ui.css"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+    <script src="/static/index/js/h5-app.js"></script>
+    <script>document.documentElement.className += ' jijin-ui-root';</script>
+</head>
+<body class="jijin-ui-body" style="font-size: 16px;">
+<div class="jijin-ui-page">
+    <header class="jijin-ui-header">
+        <button type="button" class="jijin-ui-back" onclick="history.back()" aria-label="返回">‹</button>
+        <h1>利息宝转入</h1>
+    </header>
+    <div class="jijin-balance-card" style="padding:16px;">
+        <div class="jijin-balance-label">可用余额(元)</div>
+        <div class="jijin-balance-amount" id="buyUsermoney" style="font-size:28px;">0.00</div>
+    </div>
+    <div class="jijin-form-card">
+        <div class="jijin-form-row"><span>投资期限</span><strong id="buyDays">-</strong></div>
+        <div class="jijin-form-row"><span>预期利率</span><strong id="buyRates">-</strong></div>
+        <div class="jijin-form-row"><span>起投金额</span><strong id="buyMin">-</strong></div>
+        <div class="jijin-form-row"><span>预计到期</span><strong id="buyExpire">-</strong></div>
+        <label class="jijin-form-label">投资金额</label>
+        <input type="number" id="buyMoney" class="jijin-form-input" placeholder="请输入整数金额"/>
+        <button type="button" class="jijin-submit orange" id="buySubmit">确认转入</button>
+    </div>
+    <div class="jijin-rules-card">
+        <p>本金将冻结，期间可交易但不可提现；到期自动发放利息并解除冻结。</p>
+    </div>
+</div>
+<script src="/static/layer/layer.js"></script>
+<script src="/js/pages/jijin-buy.js"></script>
+<script>$(function(){ H5PageJijinBuy.init(); });</script>
+</body>
+</html>

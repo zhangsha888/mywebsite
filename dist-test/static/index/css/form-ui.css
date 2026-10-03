@@ -1,0 +1,238 @@
+/* 信息修改 / 平仓查询 — 浅色统一 UI */
+html.form-ui-root,
+html:has(.form-ui-body) {
+    font-size: 16px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    height: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+.form-ui-body {
+    margin: 0;
+    min-height: 100vh;
+    height: auto !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    font-size: 16px !important;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: #1a1a1a;
+    -webkit-font-smoothing: antialiased;
+    background: linear-gradient(180deg, #c5e3f5 0%, #dceef8 22%, #eef5fb 50%, #f8fafc 100%);
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+    box-sizing: border-box;
+}
+
+.form-ui-page {
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.form-ui-header {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 14px 48px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+}
+
+.form-ui-back {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: #fff;
+    border-radius: 50%;
+    font-size: 22px;
+    line-height: 1;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.form-ui-header h1 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.form-ui-scroll {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 12px 14px 24px;
+    box-sizing: border-box;
+}
+
+/* 信息修改表单 */
+.pwd-section {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    padding: 4px 0 16px;
+    margin-bottom: 14px;
+}
+
+.pwd-section-title {
+    margin: 0;
+    padding: 14px 16px 8px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a1a;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.pwd-field {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    gap: 12px;
+}
+
+.pwd-field:last-of-type {
+    border-bottom: none;
+}
+
+.pwd-field label {
+    flex-shrink: 0;
+    width: 88px;
+    font-size: 14px;
+    color: #595959;
+}
+
+.pwd-field input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    color: #1a1a1a;
+    background: transparent;
+}
+
+.pwd-field input::placeholder {
+    color: #bfbfbf;
+}
+
+.pwd-submit {
+    display: block;
+    width: calc(100% - 32px);
+    margin: 12px 16px 0;
+    padding: 13px;
+    border: none;
+    border-radius: 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+}
+
+.pwd-submit.login {
+    background: #ff4d4f;
+    box-shadow: 0 4px 12px rgba(255, 77, 79, 0.35);
+}
+
+.pwd-submit.pay {
+    background: #52c41a;
+    box-shadow: 0 4px 12px rgba(82, 196, 26, 0.35);
+}
+
+/* 平仓查询列表 */
+.inquiry-table-head,
+.inquiry-row {
+    display: grid;
+    grid-template-columns: 1.4fr 0.9fr 0.7fr 0.8fr;
+    gap: 6px;
+    align-items: center;
+    padding: 12px 14px;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+.inquiry-table-head {
+    background: #fff;
+    border-radius: 12px 12px 0 0;
+    color: #8c8c8c;
+    font-weight: 600;
+    box-shadow: 0 1px 0 #f0f0f0;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.inquiry-list {
+    background: #fff;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.inquiry-row {
+    border-bottom: 1px solid #f5f5f5;
+    color: #333;
+}
+
+.inquiry-row:last-child {
+    border-bottom: none;
+}
+
+.inquiry-row .name {
+    font-weight: 600;
+    color: #1a1a1a;
+    word-break: break-all;
+}
+
+.inquiry-row .money {
+    color: #595959;
+}
+
+.inquiry-row .dir.up {
+    color: #ff4d4f;
+    font-weight: 600;
+}
+
+.inquiry-row .dir.down {
+    color: #52c41a;
+    font-weight: 600;
+}
+
+.inquiry-row .pnl.up {
+    color: #ff4d4f;
+    font-weight: 700;
+}
+
+.inquiry-row .pnl.down {
+    color: #52c41a;
+    font-weight: 700;
+}
+
+.inquiry-row .pnl.flat {
+    color: #8c8c8c;
+}
+
+.form-ui-empty {
+    text-align: center;
+    padding: 48px 20px;
+    color: #999;
+    font-size: 14px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.form-ui-body .footer {
+    display: none !important;
+}

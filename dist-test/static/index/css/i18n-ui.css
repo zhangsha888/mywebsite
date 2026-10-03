@@ -1,0 +1,86 @@
+.ui-i18n-modal-mask {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10050;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+/* 前台语言切换入口（暂隐藏，保留 i18n 文案能力） */
+.ui-lang-trigger,
+.home-ui-lang,
+.login-lang,
+.gate-lang,
+#mineLangBtn {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+}
+
+.ui-i18n-modal-mask,
+.ui-i18n-modal-mask.is-open {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+.ui-i18n-modal-mask.is-open {
+    display: block;
+}
+.ui-i18n-modal-panel {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    max-height: 70vh;
+}
+.ui-i18n-modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    font-weight: 600;
+    font-size: 16px;
+}
+.ui-i18n-modal-cancel {
+    background: transparent;
+    border: 0;
+    color: #666;
+    font-size: 14px;
+    padding: 4px 8px;
+}
+.ui-i18n-modal-body {
+    padding: 14px 16px 18px;
+    overflow-y: auto;
+}
+.ui-i18n-lang-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.ui-i18n-lang-item {
+    flex: 0 0 calc(33.333% - 7px);
+    text-align: center;
+    padding: 10px 6px;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    color: #333;
+    text-decoration: none;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+.ui-i18n-lang-item.is-active {
+    border-color: #1677ff;
+    color: #1677ff;
+    background: #f0f7ff;
+}

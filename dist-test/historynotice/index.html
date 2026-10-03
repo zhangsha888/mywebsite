@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>站内信</title>
+    <link rel="stylesheet" href="/static/index/css/mail-ui.css"/>
+    <link rel="stylesheet" href="/static/index/css/scroll-list-ui.css"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+    <script src="/static/index/js/h5-app.js"></script>
+</head>
+<body class="mail-ui-body scroll-list-body">
+<div class="mail-ui-page">
+    <header class="mail-ui-header">
+        <button type="button" class="mail-ui-back" onclick="history.back()">‹</button>
+        <h1>站内信<span id="mailUnreadBadge" class="mail-unread-badge" style="display:none;"></span></h1>
+    </header>
+    <div class="mail-ui-list" id="mailUiList" style="display:none;"></div>
+    <div class="mail-ui-empty" id="mailUiEmpty"><div class="mail-ui-empty-icon">✉️</div><p>加载中…</p></div>
+    <span id="mailUiAjaxLoad"></span>
+</div>
+<script src="/static/index/js/mail-list.js?v=20260916y"></script>
+<script>
+$(function () {
+    H5.installAjaxHook();
+    if (!H5.requireAuth()) {
+        return;
+    }
+    if (window.MailListUi && typeof MailListUi.loadAjaxList === 'function') {
+        MailListUi.loadAjaxList();
+    }
+});
+</script>
+</body>
+</html>

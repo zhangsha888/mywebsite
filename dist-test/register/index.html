@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="login-ui-root">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>开户注册</title>
+    <link rel="stylesheet" href="/static/index/css/login-ui.css?v=20260916v"/>
+    <link rel="stylesheet" href="/static/index/css/register-ui.css"/>
+    <link rel="stylesheet" href="/static/layer/skin/default/layer.css"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+    <script src="/static/index/js/h5-app.js"></script>
+    <script src="/static/layer/layer.js"></script>
+    <script src="/static/public/js/function.js"></script>
+</head>
+<body class="login-page-body">
+<div class="reg-wizard-page">
+    <a href="/login.html" class="reg-back">‹ 返回</a>
+    <div class="login-brand" style="margin-bottom:14px;">
+        <div class="login-logo-wrap"><span class="logo-fallback" style="opacity:.35">·</span></div>
+        <h1>&nbsp;</h1>
+        <p class="en" style="display:none">CERTIFICATION INTERNATIONAL</p>
+    </div>
+    <div class="reg-step-cards">
+        <div class="reg-step-card"><span class="label">开户流程</span><span class="value" id="regFlowStep">步骤 1 / 2</span></div>
+        <div class="reg-step-card"><span class="label" id="regStatusLabel">资料状态</span><span class="value" id="regStatusText">待填写</span></div>
+    </div>
+    <form method="post" id="formid" class="reg-form-card" autocomplete="off">
+        <span class="reg-step-badge" id="regStepBadge">01</span>
+        <div class="reg-form-alert is-hidden" id="regFormAlert" role="alert"></div>
+        <input type="hidden" name="oid" id="oid" value="8888">
+        <div class="reg-wizard-panel active" id="regStep1">
+            <h2 class="reg-form-title">账号注册</h2>
+            <p class="reg-form-sub">填写基础资料后继续下一步</p>
+            <div class="login-field">
+                <label for="username">账号</label>
+                <div class="login-input-wrap"><span class="ico">👤</span>
+                <input type="text" id="username" name="username" placeholder="请输入账号（4-16位字母或数字）"></div>
+                <p class="reg-field-hint is-hidden" id="hint-username"></p>
+            </div>
+            <div class="login-field">
+                <label for="nickname">姓名</label>
+                <div class="login-input-wrap"><span class="ico">👤</span>
+                <input type="text" id="nickname" name="nickname" placeholder="请输入姓名"></div>
+                <p class="reg-field-hint is-hidden" id="hint-nickname"></p>
+            </div>
+            <button type="button" class="reg-btn-next" id="btnRegNext">下一步</button>
+        </div>
+        <div class="reg-wizard-panel" id="regStep2">
+            <h2 class="reg-form-title">设置密码</h2>
+            <p class="reg-form-sub">设置登录密码与交易密码</p>
+            <div class="login-field">
+                <label for="upwd">密码</label>
+                <div class="login-input-wrap"><span class="ico">🔒</span>
+                <input type="password" id="upwd" name="upwd" placeholder="请输入密码（至少6位）">
+                <button type="button" class="login-pwd-toggle" id="toggleUpwd">显示</button></div>
+                <p class="reg-field-hint is-hidden" id="hint-upwd"></p>
+            </div>
+            <div class="login-field">
+                <label for="upwd2">确认密码</label>
+                <div class="login-input-wrap"><span class="ico">🔒</span>
+                <input type="password" id="upwd2" name="upwd2" placeholder="请再次输入登录密码">
+                <button type="button" class="login-pwd-toggle" id="toggleUpwd2">显示</button></div>
+                <p class="reg-field-hint is-hidden" id="hint-upwd2"></p>
+            </div>
+            <div class="login-field">
+                <label for="txpwd">交易密码</label>
+                <div class="login-input-wrap"><span class="ico">🛡</span>
+                <input type="password" id="txpwd" name="txpwd" placeholder="请输入交易密码（至少6位）">
+                <button type="button" class="login-pwd-toggle" id="toggleTxpwd">显示</button></div>
+                <p class="reg-field-hint is-hidden" id="hint-txpwd"></p>
+            </div>
+            <div class="login-field">
+                <label for="txpwd2">确认交易密码</label>
+                <div class="login-input-wrap"><span class="ico">🛡</span>
+                <input type="password" id="txpwd2" name="txpwd2" placeholder="请再次输入交易密码">
+                <button type="button" class="login-pwd-toggle" id="toggleTxpwd2">显示</button></div>
+                <p class="reg-field-hint is-hidden" id="hint-txpwd2"></p>
+            </div>
+            <div class="login-field reg-oid-field" id="oidFieldWrap">
+                <label for="oidInput">推荐码</label>
+                <div class="login-input-wrap"><span class="ico">🎫</span>
+                <input type="text" id="oidInput" placeholder="无推荐码请填 8888" value="8888"></div>
+            </div>
+            <button type="button" class="reg-btn-submit" id="btnRegSubmit">完成开户</button>
+            <a href="/login.html" class="reg-back-login">返回登录</a>
+        </div>
+    </form>
+</div>
+<script>
+window.REG_FORM_URL = '/index/h5api/register';
+window.REG_LOC_URL = '/home.html';
+H5.installAjaxHook();
+</script>
+<script src="/static/index/js/register-wizard.js?v=20260714r"></script>
+<script src="/js/pages/register.js"></script>
+</body>
+</html>

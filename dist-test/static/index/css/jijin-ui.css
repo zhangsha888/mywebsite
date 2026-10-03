@@ -1,0 +1,368 @@
+/* 基金宝 */
+html:has(.jijin-ui-body),
+html.jijin-ui-root {
+    font-size: 16px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    height: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+.jijin-ui-body {
+    margin: 0;
+    min-height: 100vh;
+    height: auto !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    font-size: 16px !important;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: #1f1f1f;
+    -webkit-font-smoothing: antialiased;
+    background: linear-gradient(180deg, #c5e3f5 0%, #dceef8 22%, #eef5fb 50%, #f8fafc 100%);
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+    box-sizing: border-box;
+}
+
+.jijin-ui-page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 14px 20px;
+    box-sizing: border-box;
+}
+
+.jijin-ui-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 14px 44px;
+    margin-bottom: 12px;
+}
+
+.jijin-ui-back {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    font-size: 24px;
+    color: #1a1a1a;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.jijin-ui-header h1 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.jijin-balance-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    padding: 22px 18px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.35);
+    margin-bottom: 14px;
+}
+
+.jijin-balance-label {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 6px;
+}
+
+.jijin-balance-amount {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+}
+
+.jijin-balance-sub {
+    margin-top: 12px;
+    font-size: 13px;
+    opacity: 0.88;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.jijin-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.jijin-stat-item {
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    text-align: center;
+}
+
+.jijin-stat-item.link {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.jijin-stat-item .label {
+    display: block;
+    font-size: 12px;
+    color: #8c8c8c;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.jijin-stat-item .value {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.jijin-stat-item .value.purple {
+    color: #722ed1;
+}
+
+.jijin-stat-item .value.green {
+    color: #52c41a;
+}
+
+.jijin-stat-item .value.link-text {
+    color: #1890ff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.jijin-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.jijin-action-btn {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.jijin-action-btn.out {
+    background: linear-gradient(135deg, #9254de 0%, #722ed1 100%);
+}
+
+.jijin-action-btn.in {
+    background: linear-gradient(135deg, #ffa940 0%, #fa8c16 100%);
+}
+
+.jijin-action-btn.disabled {
+    background: #d9d9d9 !important;
+    color: #8c8c8c !important;
+    pointer-events: none;
+    box-shadow: none;
+}
+
+.jijin-rules-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    font-size: 14px;
+    line-height: 1.75;
+    color: #595959;
+}
+
+.jijin-rules-card h3 {
+    margin: 0 0 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.jijin-rules-pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.jijin-form-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.07);
+    margin-bottom: 14px;
+}
+
+.jijin-form-card label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #595959;
+    margin-bottom: 8px;
+}
+
+.jijin-form-card input {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #e8ecf0;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 16px;
+    margin-bottom: 14px;
+    outline: none;
+}
+
+.jijin-form-card input:focus {
+    border-color: #722ed1;
+}
+
+.jijin-submit {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #9254de 0%, #722ed1 100%);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.jijin-submit.orange {
+    background: linear-gradient(135deg, #ffa940 0%, #fa8c16 100%);
+}
+
+.jijin-log-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.jijin-log-item {
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.jijin-log-item .info .des {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.jijin-log-item .info .time {
+    font-size: 12px;
+    color: #8c8c8c;
+    margin-top: 4px;
+}
+
+.jijin-log-item .money {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.jijin-log-item .money.plus {
+    color: #52c41a;
+}
+
+.jijin-log-item .money.minus {
+    color: #fa541c;
+}
+
+.jijin-empty {
+    text-align: center;
+    padding: 48px 20px;
+    color: #8c8c8c;
+    background: #fff;
+    border-radius: 12px;
+}
+
+.jijin-ui-header-link {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #1677ff;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.jijin-log-item .row-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 6px;
+}
+
+.jijin-log-item .row-sub {
+    font-size: 12px;
+    color: #8c8c8c;
+    width: 100%;
+    line-height: 1.5;
+}
+
+.jijin-log-item .tag {
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #f0f5ff;
+    color: #1677ff;
+}
+
+.jijin-log-item .amount.plus {
+    color: #52c41a;
+    font-weight: 700;
+}
+
+.jijin-form-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 14px;
+}
+
+.jijin-form-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+}
+
+.jijin-form-label {
+    display: block;
+    margin: 14px 0 8px;
+    font-size: 14px;
+    color: #595959;
+}
+
+.jijin-form-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    font-size: 16px;
+}

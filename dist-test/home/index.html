@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>首页</title>
+    <link rel="stylesheet" href="/static/index/css/i18n-ui.css?v=20260603"/>
+    <link rel="stylesheet" href="/static/index/css/home-ui.css?v=20260916z"/>
+    <link rel="stylesheet" href="/static/index/css/app-theme.css"/>
+    <link rel="stylesheet" href="/static/index/css/swiper.min.css"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+    <script src="/static/index/js/h5-app.js"></script>
+</head>
+<body class="home-ui-body" style="font-size: 16px;">
+<div id="app" class="home-ui-page">
+    <header class="home-ui-header">
+        <div class="home-ui-brand">
+            <img src="" alt="" onerror="this.style.display='none'" style="display:none">
+            <div class="home-ui-brand-text">
+                <h1>&nbsp;</h1>
+                <p style="display:none">CERTIFICATION INTERNATIONAL</p>
+            </div>
+        </div>
+        <button type="button" class="home-ui-lang ui-lang-trigger">🌐 简体中文</button>
+    </header>
+    <div class="home-ui-banner-wrap">
+        <div class="swiper home-ui-swiper" id="homeBanner">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background:#dceef8;min-height:120px;"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    <div class="home-ui-quick">
+        <a href="/deposit.html" class="home-ui-quick-item"><span class="icon">💰</span>快捷入金</a>
+        <a href="/trade.html" class="home-ui-quick-item"><span class="icon">📊</span>产品交易</a>
+        <a href="/hold.html" class="home-ui-quick-item"><span class="icon">📑</span>我的订单</a>
+        <a href="/bankcard.html" class="home-ui-quick-item"><span class="icon">🤝</span>出款账户</a>
+    </div>
+    <div class="home-ui-quick-row2">
+        <a href="/announcement.html" class="home-ui-quick-item"><span class="icon">📢</span>公告</a>
+        <a href="/historynotice.html" class="home-ui-quick-item home-ui-quick-mail">
+            <span class="icon">💬</span><span>站内信</span>
+            <span class="home-ui-msg-badge" id="homeMsgBadge">0</span>
+        </a>
+        <a href="javascript:;" class="home-ui-kf-card" onclick="void(0)">
+            <div class="text"><strong>在线客服</strong><small>优质竭诚为您服务</small></div>
+            <span class="kf-icon"><img src="/static/index/img/kefu.png" alt=""></span>
+        </a>
+    </div>
+    <section class="home-ui-recommend">
+        <h2 class="home-ui-section-title">产品推荐</h2>
+        <div class="home-ui-recommend-scroll"></div>
+    </section>
+    <section class="home-ui-product">
+        <h2 class="home-ui-section-title">产品</h2>
+        <div class="home-ui-table-head"><span>产品名称</span><span class="col-price">最新价</span><span class="col-status"></span></div>
+        <div class="home-ui-pro-list t_con_home"></div>
+    </section>
+</div>
+<div id="h5-tabbar"></div>
+<script src="/static/public/js/base64.js"></script>
+<script src="/static/index/js/swiper.min.js"></script>
+<script>H5.installAjaxHook();</script>
+<script src="/static/index/js/i18n.js"></script>
+<script src="/static/index/js/h5-quotes.js?v=20260714q"></script>
+<script src="/js/pages/home.js?v=20260916z"></script>
+<script>
+$(function () {
+    H5PageHome.init();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>产品交易</title>
+    <link rel="stylesheet" href="/static/index/css/trade-ui.css?v=20260916u"/>
+    <style>
+        .trade-ui-card.is-closed { opacity: .72; }
+        .trade-closed-tag {
+            display: inline-block;
+            margin-left: 4px;
+            padding: 0 4px;
+            font-size: 10px;
+            line-height: 14px;
+            color: #8c8c8c;
+            border: 1px solid #d9d9d9;
+            border-radius: 2px;
+            vertical-align: middle;
+        }
+        .trade-ui-price.price-flash, .trade-ui-price.down.price-flash { animation: tradeFlash .45s ease; }
+        @keyframes tradeFlash { from { opacity: .35; } to { opacity: 1; } }
+    </style>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+    <script src="/static/index/js/h5-app.js"></script>
+</head>
+<body class="trade-ui-body">
+<div class="trade-ui-page">
+    <section class="trade-ui-section">
+        <h2 class="trade-ui-section-title">产品</h2>
+        <div class="trade-ui-list" id="tradeList"></div>
+    </section>
+</div>
+<div id="h5-tabbar"></div>
+<script src="/static/public/js/base64.js"></script>
+<script>H5.installAjaxHook();</script>
+<script src="/static/index/js/h5-quotes.js?v=20260714q"></script>
+<script src="/js/pages/trade.js?v=20260714q"></script>
+<script>$(function(){ H5PageTrade.init(); });</script>
+</body>
+</html>

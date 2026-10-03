@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>我的利息</title>
+    <link rel="stylesheet" href="/static/index/css/jijin-ui.css"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+    <script src="/static/index/js/h5-app.js"></script>
+    <script>document.documentElement.className += ' jijin-ui-root';</script>
+</head>
+<body class="jijin-ui-body" style="font-size: 16px;">
+<div class="jijin-ui-page">
+    <header class="jijin-ui-header">
+        <button type="button" class="jijin-ui-back" onclick="history.back()" aria-label="返回">‹</button>
+        <h1>我的利息</h1>
+        <a href="/jijinbao.html" class="jijin-ui-header-link">去投资</a>
+    </header>
+    <div class="jijin-log-list" id="jijinLogList">
+        <div class="jijin-empty">加载中...</div>
+    </div>
+</div>
+<script src="/js/pages/jijin-log.js"></script>
+<script>$(function(){ H5PageJijinLog.init(); });</script>
+</body>
+</html>

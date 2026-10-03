@@ -1,0 +1,38 @@
+/* GOODS_UI_BUILD:20260602h — 下单页兜底，由 goods-page-fix.js 与 PHP 注入加载 */
+html.goods-chart-root,
+body.goods-chart-body {
+    min-height: 0 !important;
+    height: auto !important;
+    overflow-x: hidden !important;
+    background-attachment: scroll !important;
+}
+
+body.goods-chart-body .trade-view .history-panel:not(.is-visible),
+body.goods-chart-body .history-panel:not(.is-visible) {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    position: fixed !important;
+    left: -9999px !important;
+    width: 0 !important;
+    pointer-events: none !important;
+}
+
+body.goods-chart-body .trade-content footer.goods-chart-area,
+body.goods-chart-body .goods-chart-area {
+    width: auto !important;
+    margin: 0 12px 8px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    touch-action: pan-y !important;
+}
+
+body.goods-chart-body #container,
+body.goods-chart-body #ecKx {
+    height: min(280px, 42vh) !important;
+    max-height: 280px !important;
+    touch-action: pan-y !important;
+}

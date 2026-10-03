@@ -1,0 +1,324 @@
+/* 个人中心 UI */
+.mine-ui-body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #c5e3f5 0%, #dceef8 25%, #f0f6fb 55%, #f8fafc 100%);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: #333;
+    padding-bottom: calc(56px + env(safe-area-inset-bottom));
+}
+.mine-ui-body::before,
+.mine-ui-body::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+.mine-ui-body::before {
+    width: 200px;
+    height: 200px;
+    top: -40px;
+    right: -30px;
+    background: rgba(255,255,255,.35);
+}
+.mine-ui-body::after {
+    width: 140px;
+    height: 140px;
+    top: 120px;
+    left: -40px;
+    background: rgba(24,144,255,.08);
+}
+
+.mine-ui-page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 16px 14px 20px;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+/* 用户信息 */
+.mine-ui-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+}
+.mine-ui-user h2 {
+    margin: 0 0 8px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+.mine-ui-phone-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+.mine-ui-phone {
+    font-size: 14px;
+    color: #666;
+}
+
+.mine-ui-account {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+.mine-ui-badge-level {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 10px;
+    background: linear-gradient(135deg, #e8d5ff, #d4b8ff);
+    color: #6b3fa0;
+    font-size: 11px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+.mine-ui-badge-credit {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    background: #f6ffed;
+    border: 1px solid #b7eb8f;
+    color: #389e0d;
+    font-size: 12px;
+    border-radius: 14px;
+}
+.mine-ui-invite {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,.75);
+    border-radius: 20px;
+    font-size: 12px;
+    color: #666;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    flex-shrink: 0;
+}
+.mine-ui-invite strong {
+    color: #333;
+    font-weight: 600;
+}
+.mine-ui-invite .copy-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    color: #1890ff;
+}
+
+/* 资产卡片 */
+.mine-ui-asset-card {
+    background: rgba(255,255,255,.92);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.08);
+    margin-bottom: 12px;
+    backdrop-filter: blur(8px);
+}
+.mine-ui-asset-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+.mine-ui-asset-top .label {
+    font-size: 13px;
+    color: #888;
+}
+.mine-ui-currency-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: #e6f7ff;
+    color: #1890ff;
+    font-size: 11px;
+    border-radius: 12px;
+}
+.mine-ui-balance {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+}
+.mine-ui-balance sub {
+    font-size: 16px;
+    font-weight: 600;
+}
+.mine-ui-usdt {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 12px;
+}
+.mine-ui-profit-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 24px;
+    padding-top: 12px;
+    border-top: 1px solid #f0f0f0;
+}
+.mine-ui-profit-item {
+    text-align: right;
+}
+.mine-ui-profit-item .label {
+    display: block;
+    font-size: 11px;
+    color: #999;
+    margin-bottom: 4px;
+}
+.mine-ui-profit-item .value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ff4d4f;
+}
+.mine-ui-profit-item .value.up {
+    color: #52c41a;
+}
+.mine-ui-profit-item .value.down {
+    color: #ff4d4f;
+}
+
+/* 快捷操作 */
+.mine-ui-actions {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.mine-ui-balance-box {
+    background: rgba(255,255,255,.92);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+.mine-ui-balance-box .label {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 6px;
+}
+.mine-ui-balance-box .amount {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+.mine-ui-action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,.92);
+    border-radius: 14px;
+    padding: 14px 8px;
+    text-decoration: none;
+    color: #333;
+    font-size: 13px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+.mine-ui-action-btn .icon {
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+.mine-ui-action-btn.deposit .icon { color: #9254de; }
+.mine-ui-action-btn.withdraw .icon { color: #1890ff; }
+
+/* 菜单列表 */
+.mine-ui-menu {
+    background: rgba(255,255,255,.85);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    margin-bottom: 12px;
+}
+.mine-ui-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #f5f5f5;
+    transition: background .15s;
+}
+.mine-ui-menu-item:last-child {
+    border-bottom: none;
+}
+.mine-ui-menu-item:active {
+    background: #f5f5f5;
+}
+.mine-ui-menu-item .menu-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+.mine-ui-menu-item .menu-icon.blue { background: #e6f7ff; }
+.mine-ui-menu-item .menu-icon.orange { background: #fff7e6; }
+.mine-ui-menu-item .menu-icon.purple { background: #f9f0ff; }
+.mine-ui-menu-item .menu-icon.pink { background: #fff0f6; }
+.mine-ui-menu-item .menu-icon.green { background: #f6ffed; }
+.mine-ui-menu-item .menu-label {
+    flex: 1;
+    font-size: 15px;
+}
+.mine-ui-menu-item .menu-arrow {
+    color: #ccc;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+.mine-ui-msg-badge {
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    margin-left: auto;
+    margin-right: 8px;
+    border-radius: 10px;
+    background: #bfbfbf;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+.mine-ui-msg-badge.has-unread {
+    background: #ff4d4f;
+    box-shadow: 0 2px 6px rgba(255, 77, 79, 0.45);
+}
+
+.mine-ui-extra {
+    margin-top: 8px;
+}
+.mine-ui-extra .mine-ui-menu-item {
+    background: rgba(255,255,255,.7);
+    border-radius: 12px;
+    margin-bottom: 8px;
+    border-bottom: none;
+    box-shadow: 0 1px 6px rgba(0,0,0,.04);
+}
+.mine-ui-extra .mine-ui-menu-item.logout .menu-label {
+    color: #ff4d4f;
+}
+
+.mine-ui-notice {
+    text-align: center;
+    font-size: 12px;
+    color: #ff4d4f;
+    padding: 8px;
+    margin-bottom: 8px;
+}

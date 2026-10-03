@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>快捷入金</title>
+    <link rel="stylesheet" href="/static/index/css/deposit-ui.css"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+    <script src="/static/index/js/h5-app.js"></script>
+    <script>document.documentElement.className += ' deposit-ui-root';</script>
+</head>
+<body class="deposit-ui-body">
+<div class="deposit-ui-page">
+    <header class="deposit-ui-header">
+        <button type="button" class="deposit-ui-back" onclick="history.back()">‹</button>
+        <h1>快捷入金</h1>
+    </header>
+    <div class="deposit-channel-row">
+        <button type="button" class="deposit-channel-btn active" data-channel="bank"><span class="icon">💳</span><span>银行卡充值</span></button>
+        <button type="button" class="deposit-channel-btn" data-channel="usdt"><span class="icon">₮</span><span>USDT充值</span></button>
+    </div>
+    <div class="deposit-panel active" id="panel-bank">
+        <div class="deposit-card">
+            <h2 class="deposit-card-title">收款账户信息</h2>
+            <div class="deposit-account-box">
+                <div class="deposit-account-row"><span class="label">开户银行</span><span class="val" id="bank-bank">-</span></div>
+                <div class="deposit-account-row"><span class="label">开户网点</span><span class="val" id="bank-address">-</span></div>
+                <div class="deposit-account-row"><span class="label">收款账号</span><span class="val copy-target" id="bank-card" data-copy="">-</span></div>
+                <div class="deposit-account-row"><span class="label">收款姓名</span><span class="val copy-target" id="bank-name" data-copy="">-</span></div>
+                <button type="button" class="deposit-copy-btn" data-copy-target="bank-card">复制收款账号</button>
+            </div>
+        </div>
+    </div>
+    <div class="deposit-panel" id="panel-usdt">
+        <div class="deposit-card">
+            <h2 class="deposit-card-title">USDT 收款信息</h2>
+            <div class="deposit-account-box usdt-theme">
+                <p class="deposit-account-notice" id="usdt-pay-name">USDT充值</p>
+                <div class="deposit-account-row"><span class="label">链类型</span><span class="val" id="usdt-bank">-</span></div>
+                <div class="deposit-account-row"><span class="label">备注说明</span><span class="val" id="usdt-address">-</span></div>
+                <div class="deposit-account-row"><span class="label">收款地址</span><span class="val copy-target" id="usdt-card" data-copy="">-</span></div>
+                <button type="button" class="deposit-copy-btn" data-copy-target="usdt-card">复制 USDT 地址</button>
+            </div>
+        </div>
+    </div>
+    <div class="deposit-card">
+        <h2 class="deposit-card-title">提交入款申请</h2>
+        <div class="deposit-form-group">
+            <label>入金金额</label>
+            <div class="deposit-input-wrap"><span class="deposit-input-prefix" id="amountPrefix">¥</span>
+            <input type="number" id="depositAmount" placeholder="请输入金额"></div>
+        </div>
+        <div class="deposit-form-group">
+            <label>存款姓名</label>
+            <input type="text" id="depositName" class="deposit-input-simple" placeholder="请输入转账使用的姓名">
+        </div>
+        <input type="hidden" id="depositChannel" value="bank">
+        <button type="button" class="deposit-submit" id="depositSubmit">提交入款申请</button>
+    </div>
+</div>
+<script src="/static/layer/layer.js"></script>
+<script src="/static/index/js/deposit.js"></script>
+<script src="/js/pages/deposit.js"></script>
+<script>$(function(){ H5.installAjaxHook(); H5.requireAuth(); });</script>
+</body>
+</html>

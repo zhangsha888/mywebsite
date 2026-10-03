@@ -1,0 +1,48 @@
+.withdraw-balance-card {
+    background: linear-gradient(135deg, #e6f4ff 0%, #f0f5ff 100%);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 12px rgba(24, 144, 255, 0.12);
+}
+
+.withdraw-balance-label {
+    font-size: 13px;
+    color: #666;
+}
+
+.withdraw-balance-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1890ff;
+    margin: 6px 0 4px;
+}
+
+.withdraw-fee-hint {
+    font-size: 12px;
+    color: #fa8c16;
+}
+
+.withdraw-account-plain {
+    background: #fafafa;
+    border-radius: 10px;
+    padding: 4px 12px;
+}
+
+.withdraw-bind-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px;
+    background: #1890ff;
+    color: #fff !important;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.withdraw-submit-btn {
+    background: linear-gradient(135deg, #fa8c16 0%, #fa541c 100%);
+    box-shadow: 0 4px 14px rgba(250, 140, 22, 0.35);
+}

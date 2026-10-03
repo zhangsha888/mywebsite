@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>平仓查询</title>
+    <link rel="stylesheet" href="/static/index/css/form-ui.css"/>
+    <link rel="stylesheet" href="/static/index/css/scroll-list-ui.css"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+    <script src="/static/index/js/h5-app.js"></script>
+    <script>document.documentElement.className += ' form-ui-root scroll-list-root';</script>
+</head>
+<body class="form-ui-body scroll-list-body" style="font-size: 16px;">
+<div class="form-ui-page">
+    <header class="form-ui-header">
+        <button type="button" class="form-ui-back" onclick="history.back()" aria-label="返回">‹</button>
+        <h1>平仓查询</h1>
+    </header>
+    <div class="form-ui-scroll" id="inquiryRoot">
+        <div class="form-ui-empty"><p>加载中...</p></div>
+    </div>
+</div>
+<script src="/js/pages/inquiries.js"></script>
+<script>$(function(){ H5PageInquiries.init(); });</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>绑定银行卡</title>
+    <link rel="stylesheet" href="/static/index/css/deposit-ui.css"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+</head>
+<body class="deposit-ui-body">
+<div class="deposit-ui-page">
+    <header class="deposit-ui-header"><button type="button" class="deposit-ui-back" onclick="history.back()">‹</button><h1>绑定银行卡</h1></header>
+    <div class="deposit-card" id="bankBindRoot">
+        <p class="deposit-card-sub">请填写银行卡信息</p>
+        <form id="bankForm">
+            <div class="deposit-form-group"><label>持卡人姓名</label><input type="text" name="accntnm" class="deposit-input-simple" required></div>
+            <div class="deposit-form-group"><label>银行卡号</label><input type="text" name="accntno" class="deposit-input-simple" required></div>
+            <div class="deposit-form-group"><label>开户银行</label><input type="text" name="content" class="deposit-input-simple" required></div>
+            <div class="deposit-form-group"><label>开户分行</label><input type="text" name="address" class="deposit-input-simple" required></div>
+            <button type="submit" class="deposit-submit">确认绑定</button>
+        </form>
+    </div>
+</div>
+<script src="/static/layer/layer.js"></script>
+<script src="/js/pages/add-bank.js"></script>
+</body>
+</html>

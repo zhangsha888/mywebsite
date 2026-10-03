@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>签到</title>
+    <link rel="stylesheet" href="/static/index/css/home-ui.css"/>
+    <link rel="stylesheet" href="/static/index/css/signin-ui.css"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+    <script src="/static/index/js/h5-app.js"></script>
+    <script>document.documentElement.className += ' signin-ui-root scroll-list-root';</script>
+</head>
+<body class="signin-ui-body scroll-list-body" style="font-size: 16px;">
+<div class="signin-ui-page">
+    <header class="signin-ui-header">
+        <button type="button" class="signin-ui-back" onclick="history.back()" aria-label="返回">‹</button>
+        <h1>签到</h1>
+    </header>
+    <section class="signin-ui-card">
+        <div class="row">
+            <div class="k">连续签到</div>
+            <div class="v"><strong id="signinStreak">1</strong> 天</div>
+        </div>
+        <div class="row">
+            <div class="k">今日奖励</div>
+            <div class="v"><strong id="signinReward">0</strong></div>
+        </div>
+        <div class="row">
+            <div class="k">当前余额</div>
+            <div class="v">¥ <strong id="signinBalance">0</strong></div>
+        </div>
+        <button type="button" class="signin-ui-btn" id="signinBtn">立即签到</button>
+        <p class="signin-ui-tip">签到奖励由后台设置，签到成功后会在「资金记录」里显示。</p>
+    </section>
+    <section class="signin-ui-plan">
+        <h2>奖励规则</h2>
+        <div class="plan-list" id="signinPlanList"></div>
+    </section>
+    <div class="signin-ui-links">
+        <a class="link" id="signinFundLink" href="/accountrecord.html">查看资金记录</a>
+    </div>
+</div>
+<script src="/static/layer/layer.js"></script>
+<script src="/js/pages/signin.js"></script>
+<script>
+$(function () {
+    H5PageSignin.init();
+    $('#signinFundLink').attr('href', H5.pageUrl('accountrecord.html'));
+});
+</script>
+</body>
+</html>

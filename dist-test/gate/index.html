@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="gate-ui-root">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>内部邀请码</title>
+    <link rel="stylesheet" href="/static/index/css/gate-ui.css?v=20260615a"/>
+    <link rel="stylesheet" href="/static/index/css/i18n-ui.css?v=20260603"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+    <script src="/static/index/js/h5-app.js"></script>
+</head>
+<body class="gate-ui-body">
+<div class="gate-wrap">
+    <div class="gate-topbar">
+        <span class="gate-secure"><span class="dot"></span> Secure</span>
+        <button type="button" class="gate-lang ui-lang-trigger">🌐 简体中文</button>
+    </div>
+    <div class="gate-brand">
+        <div class="logo-circle"><span class="fallback" style="opacity:.35">·</span></div>
+        <div class="gate-brand-text">
+            <h2>&nbsp;</h2>
+            <p style="display:none">CERTIFICATION INTERNATIONAL</p>
+        </div>
+    </div>
+    <div class="gate-card">
+        <h1 class="gate-title">内部邀请码</h1>
+        <div class="gate-field">
+            <label for="gateCode">内部邀请码</label>
+            <input type="text" id="gateCode" placeholder="请输入内部邀请码" autocomplete="off" maxlength="64">
+        </div>
+        <div class="gate-divider"></div>
+        <button type="button" class="gate-submit" id="gateSubmit">验证</button>
+    </div>
+</div>
+<script src="/static/index/js/i18n.js"></script>
+<script src="/js/pages/gate.js"></script>
+<script>$(function(){ H5PageGate.init(); });</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>出金</title>
+    <link rel="stylesheet" href="/static/index/css/deposit-ui.css"/>
+    <link rel="stylesheet" href="/static/index/css/withdraw-ui.css"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+    <script src="/static/index/js/h5-app.js"></script>
+</head>
+<body class="deposit-ui-body scroll-list-body">
+<div class="deposit-ui-page">
+    <header class="deposit-ui-header">
+        <button type="button" class="deposit-ui-back" onclick="history.back()">‹</button>
+        <h1>出金</h1>
+    </header>
+    <div class="withdraw-balance-card">
+        <span class="withdraw-balance-label">可用余额(CNY)</span>
+        <div class="withdraw-balance-value">¥ <span id="userBalance">0</span></div>
+        <div class="withdraw-fee-hint" id="feeHint" style="display:none;">手续费(<span id="feeRate">0</span>%)：<span id="feeAmount">0.00</span></div>
+    </div>
+    <div class="deposit-channel-row">
+        <button type="button" class="deposit-channel-btn active" data-channel="bank"><span class="icon">💳</span><span>银行卡出金</span></button>
+        <button type="button" class="deposit-channel-btn" data-channel="usdt"><span class="icon">₮</span><span>USDT出金</span></button>
+    </div>
+    <div class="deposit-panel active" id="panel-bank">
+        <div class="deposit-card" id="bankPanelBody"><div class="deposit-tip">加载中...</div></div>
+    </div>
+    <div class="deposit-panel" id="panel-usdt">
+        <div class="deposit-card" id="usdtPanelBody"><div class="deposit-tip">加载中...</div></div>
+    </div>
+    <div class="deposit-card">
+        <div class="deposit-form-group">
+            <label>出金金额(CNY)</label>
+            <div class="deposit-input-wrap"><span class="deposit-input-prefix">¥</span>
+            <input type="number" id="withdrawAmount" placeholder="请输入出金金额"></div>
+        </div>
+        <div class="deposit-form-group">
+            <label>提现密码</label>
+            <input type="password" id="withdrawPwd" class="deposit-input-simple" placeholder="请输入提现密码">
+        </div>
+        <input type="hidden" id="withdrawChannel" value="bank">
+        <div class="deposit-tip" id="withdrawTips" style="margin-bottom:12px;"></div>
+        <button type="button" class="deposit-submit" id="withdrawSubmit">确认提交</button>
+    </div>
+</div>
+<script src="/static/layer/layer.js"></script>
+<script src="/static/index/js/withdraw.js"></script>
+<script src="/js/pages/withdraw.js"></script>
+</body>
+</html>

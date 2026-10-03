@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>入金明细</title>
+    <link rel="stylesheet" href="/static/index/css/deposit-ui.css"/>
+    <link rel="stylesheet" href="/static/index/css/fund-record-ui.css"/>
+    <link rel="stylesheet" href="/static/index/css/scroll-list-ui.css"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+</head>
+<body class="deposit-ui-body scroll-list-body">
+<div class="deposit-ui-page">
+    <header class="deposit-ui-header"><button type="button" class="deposit-ui-back" onclick="history.back()">‹</button><h1 id="fundPageTitle">入金明细</h1></header>
+    <div class="fund-record-list" id="fundRecordList"></div>
+    <div class="fund-record-empty" id="fundRecordEmpty" style="display:none;"><p>暂无记录</p></div>
+</div>
+<script>window.FUND_RECORD_TYPE='deposit';</script>
+<script src="/js/pages/fund-records.js"></script>
+</body>
+</html>

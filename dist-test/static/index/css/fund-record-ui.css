@@ -1,0 +1,102 @@
+.fund-record-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.fund-record-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.fund-record-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.fund-record-type {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.fund-record-type.deposit {
+    color: #52c41a;
+}
+
+.fund-record-type.withdraw {
+    color: #fa541c;
+}
+
+.fund-record-type.other {
+    color: #1890ff;
+}
+
+.fund-record-status {
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.fund-record-status.ok {
+    background: #f6ffed;
+    color: #52c41a;
+}
+
+.fund-record-status.pending {
+    background: #fffbe6;
+    color: #faad14;
+}
+
+.fund-record-status.reject {
+    background: #fff2f0;
+    color: #ff4d4f;
+}
+
+.fund-record-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 4px 0;
+    color: #666;
+}
+
+.fund-record-row .val {
+    color: #1a1a1a;
+    font-weight: 500;
+    text-align: right;
+    max-width: 65%;
+    word-break: break-all;
+}
+
+.fund-record-amount {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.fund-record-amount.plus {
+    color: #52c41a;
+}
+
+.fund-record-amount.minus {
+    color: #fa541c;
+}
+
+.fund-record-empty {
+    text-align: center;
+    padding: 48px 20px;
+    color: #999;
+    font-size: 14px;
+}
+
+.fund-record-channel {
+    font-size: 12px;
+    color: #1890ff;
+    margin-left: 6px;
+}

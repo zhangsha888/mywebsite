@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>订单记录</title>
+    <link rel="stylesheet" href="/static/index/css/home-ui.css"/>
+    <link rel="stylesheet" href="/static/index/css/order-ui.css?v=20260916x"/>
+    <link rel="stylesheet" href="/static/index/css/scroll-list-ui.css"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+    <script src="/static/index/js/h5-app.js"></script>
+    <script>document.documentElement.className += ' order-ui-root scroll-list-root';</script>
+</head>
+<body class="order-ui-body scroll-list-body">
+<div id="app">
+    <div class="order-ui-top">
+        <header class="order-ui-header">
+            <button type="button" class="order-ui-back" onclick="history.back()">‹</button>
+            <h1 class="order-page-title">订单记录</h1>
+        </header>
+        <header class="order-tabs">
+            <article class="left-table active" onclick="change_category(0)"><span>持仓中</span></article>
+            <article class="right-table" onclick="change_category(1)"><span>已平仓</span></article>
+        </header>
+    </div>
+    <div class="order-list-scroll-host">
+        <div class="trade_history_list order-list-wrap slider">
+            <div class="slider-slides">
+                <ion-slide class="slider-slide slider-left" data-index="0">
+                    <ul class="order-card-list"></ul>
+                </ion-slide>
+                <ion-slide class="slider-slide slider-right" data-index="1">
+                    <ul class="uls order-card-list"></ul>
+                </ion-slide>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="h5-tabbar"></div>
+<div class="modal-backdrop ng-hide" id="orderModalBackdrop" hidden>
+    <div class="modal-wrapper">
+        <div class="order-modal modal">
+            <div class="order-modal-header bar bar-header">
+                <h1 class="title">历史明细</h1>
+                <div class="close" onclick="close_order_modal()"><i class="icon ion-ios-close-empty"></i></div>
+            </div>
+            <div class="order-modal-content">
+                <ul class="list">
+                    <li class="item item-input"><span class="input-label">商品</span><span class="input-content ptitle"></span></li>
+                    <li class="item item-input"><span class="input-label">成交价</span><span class="input-content buyprice"></span></li>
+                    <li class="item item-input"><span class="input-label">结算价</span><span class="input-content sellprice"></span></li>
+                    <li class="item item-input"><span class="input-label">手续费</span><span class="input-content" id="holdWebPoundage">-</span></li>
+                    <li class="item item-input"><span class="input-label">盈亏</span><span class="input-content rise ploss"></span></li>
+                    <li class="item item-input"><span class="input-label">成交时间</span><span class="input-content buytime"></span></li>
+                    <li class="item item-input"><span class="input-label">结算时间</span><span class="input-content selltime"></span></li>
+                </ul>
+            </div>
+            <div class="button-bar"><a class="button button-dark" onclick="close_order_modal()">关闭</a></div>
+        </div>
+    </div>
+</div>
+<script src="/static/public/js/base64.js"></script>
+<script src="/static/layer/layer.js"></script>
+<script src="/static/index/js/lk/order.js"></script>
+<script>H5.installAjaxHook();</script>
+<script src="/static/index/js/lk/hold.js?v=20260916x"></script>
+<script src="/js/pages/hold.js"></script>
+<script>$(function(){ H5PageHold.init(); });</script>
+</body>
+</html>

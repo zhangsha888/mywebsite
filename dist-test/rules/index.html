@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>规则介绍</title>
+    <link rel="stylesheet" href="/static/index/css/form-ui.css"/>
+    <script src="/config.js"></script>
+    <script src="/static/index/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/index/js/h5-api-config.js"></script>
+    <script src="/static/index/js/h5-app.js"></script>
+    <style>
+        .rules-ui-page { min-height: 100vh; background: #f5f6f8; }
+        .rules-ui-header { display: flex; align-items: center; height: 44px; padding: 0 12px; background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10; }
+        .rules-ui-back { border: none; background: none; font-size: 28px; line-height: 1; padding: 0 8px 0 0; color: #333; }
+        .rules-ui-header h1 { flex: 1; text-align: center; font-size: 17px; margin: 0; padding-right: 36px; }
+        .rules-ui-body { padding: 0; }
+        .rules-ui-body img { display: block; width: 100%; height: auto; }
+        .rules-ui-loading { text-align: center; padding: 40px 16px; color: #999; }
+    </style>
+</head>
+<body class="rules-ui-page">
+<header class="rules-ui-header">
+    <button type="button" class="rules-ui-back" onclick="history.back()" aria-label="返回">‹</button>
+    <h1>规则介绍</h1>
+</header>
+<div class="rules-ui-body" id="rulesImageWrap">
+    <div class="rules-ui-loading">加载中...</div>
+</div>
+<script src="/js/pages/rules.js"></script>
+<script>$(function(){ H5PageRules.init(); });</script>
+</body>
+</html>
